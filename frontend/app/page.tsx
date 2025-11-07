@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { DataModel } from "./model";
+import { collection, getDocs, query, limit, getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
 
 type FetchState = {
 	items: DataModel[];
@@ -56,25 +58,26 @@ export default function Home() {
 		// Extend for testing overflows, scrolling, ...
 	];
 
+	// Firebase configuration
+	// const firebaseConfig = {};
+	// const app = initializeApp(firebaseConfig);
+	// const db = getFirestore(app);
+
 	useEffect(() => {
-		// let mounted = true;
-		// const fetchArticles = async () => {
-		// 	try {
-		// 		const res = await fetch("/api/articles?limit=50");
-		// 		if (!res.ok) throw new Error(`HTTP ${res.status}`);
-		// 		const data: DataModel[] = await res.json();
-		// 		if (!mounted) return;
-		// 		setState({ items: data.slice(0, 50), loading: false });
-		// 	} catch (err: any) {
-		// 		if (!mounted) return;
-		// 		setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
-		// 	}
-		// };
+		const fetchArticles = async () => {
+			try {
+				const q = query(collection(db, "news"), limit(50));
+				const querySnapshot = await getDocs(q);
+				const data: DataModel[] = querySnapshot.docs.map((doc) => ({
+					...(doc.data() as DataModel),
+				}));
+				setState({ items: data, loading: false });
+			} catch (err: any) {
+				setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
+			}
+		};
 
 		// fetchArticles();
-		// return () => {
-		// 	mounted = false;
-		// };
 
 		// Used for UI testing
 		setState({
