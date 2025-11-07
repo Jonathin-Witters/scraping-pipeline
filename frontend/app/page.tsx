@@ -64,19 +64,19 @@ export default function Home() {
 	// const db = getFirestore(app);
 
 	useEffect(() => {
-		const fetchArticles = async () => {
-			try {
-				const q = query(collection(db, "news"), limit(50));
-				const querySnapshot = await getDocs(q);
-				const data: DataModel[] = querySnapshot.docs.map((doc) => ({
-					...(doc.data() as DataModel),
-				}));
-				setState({ items: data, loading: false });
-			} catch (err: any) {
-				setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
-			}
-		};
-
+		// const fetchArticles = async () => {
+		// 	try {
+		// 		const q = query(collection(db, "news"), limit(50));
+		// 		const querySnapshot = await getDocs(q);
+		// 		const data: DataModel[] = querySnapshot.docs.map((doc) => ({
+		// 			...(doc.data() as DataModel),
+		// 		}));
+		// 		setState({ items: data, loading: false });
+		// 	} catch (err: any) {
+		// 		setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
+		// 	}
+		// };
+		// 
 		// fetchArticles();
 
 		// Used for UI testing
