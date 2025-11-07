@@ -26,6 +26,66 @@ export default function Home() {
 				"First lines of article 1, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
 			content: "Full content of article 1",
 		},
+		{
+			title: "Artikel 2",
+			date: new Date(),
+			author: "Author 2",
+			url: new URL("http://localhost:3000"),
+			source: "Source 2",
+			thumbnail: new URL("http://example.com/thumb2.jpg"),
+			tags: ["tag1", "tag2"],
+			first_lines:
+				"First lines of article 2, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
+			content: "Full content of article 2",
+		},
+		{
+			title: "Artikel 3",
+			date: new Date(),
+			author: "Author 3",
+			url: new URL("http://localhost:3000"),
+			source: "Source 3",
+			thumbnail: new URL("http://example.com/thumb3.jpg"),
+			tags: ["tag1", "tag2"],
+			first_lines:
+				"First lines of article 3, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
+			content: "Full content of article 3",
+		},
+		{
+			title: "Artikel 4",
+			date: new Date(),
+			author: "Author 4",
+			url: new URL("http://localhost:3000"),
+			source: "Source 4",
+			thumbnail: new URL("http://example.com/thumb4.jpg"),
+			tags: ["tag1", "tag2"],
+			first_lines:
+				"First lines of article 4, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
+			content: "Full content of article 4",
+		},
+		{
+			title: "Artikel 5",
+			date: new Date(),
+			author: "Author 5",
+			url: new URL("http://localhost:3000"),
+			source: "Source 5",
+			thumbnail: new URL("http://example.com/thumb5.jpg"),
+			tags: ["tag1", "tag2"],
+			first_lines:
+				"First lines of article 5, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
+			content: "Full content of article 5",
+		},
+		{
+			title: "Artikel 6",
+			date: new Date(),
+			author: "Author 6",
+			url: new URL("http://localhost:3000"),
+			source: "Source 6",
+			thumbnail: new URL("http://example.com/thumb6.jpg"),
+			tags: ["tag1", "tag2"],
+			first_lines:
+				"First lines of article 6, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
+			content: "Full content of article 6",
+		},
 	];
 
 	useEffect(() => {
@@ -81,20 +141,20 @@ export default function Home() {
 											className="flex flex-col bg-white dark:bg-zinc-900 rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-zinc-100 dark:border-zinc-800"
 										>
 											<div className="relative w-full h-40 bg-zinc-100 dark:bg-zinc-800">
-                        {item.thumbnail ? (
-                          <Image
-                            src={item.thumbnail.toString()}
-                            alt={item.title ?? "thumbnail"}
-                            fill
-                            style={{ objectFit: "cover" }}
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            unoptimized
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-zinc-400">
-                            No image
-                          </div>
-                        )}
+												{item.thumbnail ? (
+													<Image
+														src={item.thumbnail.toString()}
+														alt={item.title ?? "thumbnail"}
+														fill
+														style={{ objectFit: "cover" }}
+														sizes="(max-width: 768px) 100vw, 33vw"
+														unoptimized
+													/>
+												) : (
+													<div className="w-full h-full flex items-center justify-center text-zinc-400">
+														No image
+													</div>
+												)}
 											</div>
 
 											<div className="p-4 flex-1 flex flex-col">
