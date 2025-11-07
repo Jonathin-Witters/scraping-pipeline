@@ -11,12 +11,15 @@ type FetchState = {
 };
 
 export default function Home() {
+	const sources = "VRT NWS, De Morgen, ..."; // Add used sources here
+
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
 
+	// used for UI testing
 	const testItems: DataModel[] = [
 		{
 			title: "Artikel 1",
-			date: new Date(),
+			date: new Date("2024-06-01T10:00:00Z"),
 			author: "Author 1",
 			url: new URL("http://localhost:3000"),
 			source: "Source 1",
@@ -28,7 +31,7 @@ export default function Home() {
 		},
 		{
 			title: "Artikel 2",
-			date: new Date(),
+			date: new Date("2024-04-02T11:00:00Z"),
 			author: "Author 2",
 			url: new URL("http://localhost:3000"),
 			source: "Source 2",
@@ -40,7 +43,7 @@ export default function Home() {
 		},
 		{
 			title: "Artikel 3",
-			date: new Date(),
+			date: new Date("2024-08-03T12:00:00Z"),
 			author: "Author 3",
 			url: new URL("http://localhost:3000"),
 			source: "Source 3",
@@ -50,42 +53,7 @@ export default function Home() {
 				"First lines of article 3, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
 			content: "Full content of article 3",
 		},
-		{
-			title: "Artikel 4",
-			date: new Date(),
-			author: "Author 4",
-			url: new URL("http://localhost:3000"),
-			source: "Source 4",
-			thumbnail: new URL("http://example.com/thumb4.jpg"),
-			tags: ["tag1", "tag2"],
-			first_lines:
-				"First lines of article 4, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
-			content: "Full content of article 4",
-		},
-		{
-			title: "Artikel 5",
-			date: new Date(),
-			author: "Author 5",
-			url: new URL("http://localhost:3000"),
-			source: "Source 5",
-			thumbnail: new URL("http://example.com/thumb5.jpg"),
-			tags: ["tag1", "tag2"],
-			first_lines:
-				"First lines of article 5, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
-			content: "Full content of article 5",
-		},
-		{
-			title: "Artikel 6",
-			date: new Date(),
-			author: "Author 6",
-			url: new URL("http://localhost:3000"),
-			source: "Source 6",
-			thumbnail: new URL("http://example.com/thumb6.jpg"),
-			tags: ["tag1", "tag2"],
-			first_lines:
-				"First lines of article 6, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
-			content: "Full content of article 6",
-		},
+		// Extend for testing overflows, scrolling, ...
 	];
 
 	useEffect(() => {
@@ -108,19 +76,21 @@ export default function Home() {
 		// 	mounted = false;
 		// };
 
-		setState({ items: testItems, loading: false });
+		// Used for UI testing
+		setState({
+			items: testItems.sort((a, b) => b.date.getTime() - a.date.getTime()), // Sort by recency
+			loading: false,
+		});
 	}, []);
 
 	return (
 		<div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-			<main className="flex min-h-screen w-full max-w-5xl flex-col items-center py-12 px-6 bg-white dark:bg-black">
+			<main className="flex min-h-screen w-full max-w-[80vw] flex-col items-center py-12 px-6 bg-white dark:bg-black">
 				<header className="w-full mb-6">
 					<h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
 						Latest Articles
 					</h1>
-					<p className="text-sm text-zinc-600 dark:text-zinc-400">
-						Up to 50 articles from various outlets
-					</p>
+					<p className="text-sm text-zinc-600 dark:text-zinc-400">Scraped from: {sources}</p>
 				</header>
 
 				{state.loading ? (
@@ -131,13 +101,13 @@ export default function Home() {
 					<div className="w-full text-red-500">Error: {state.error}</div>
 				) : (
 					<div className="w-full">
-						<div className="h-[70vh] overflow-auto pr-2">
-							<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+						<div className="overflow-auto pr-2">
+							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 								{state.items.map((item) => {
 									const dateStr = item.date ? new Date(item.date).toLocaleString() : "Unknown date";
 									return (
 										<article
-											key={(item as any).id ?? item.title}
+											key={item.title + item.source} // Should (realistically) guarantee uniqueness
 											className="flex flex-col bg-white dark:bg-zinc-900 rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-zinc-100 dark:border-zinc-800"
 										>
 											<div className="relative w-full h-40 bg-zinc-100 dark:bg-zinc-800">
@@ -159,14 +129,14 @@ export default function Home() {
 
 											<div className="p-4 flex-1 flex flex-col">
 												<h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 line-clamp-2">
-													{item.title ?? "Untitled"}
+													{item.title}
 												</h2>
 												<p className="mt-2 text-xs text-zinc-600 dark:text-zinc-300 line-clamp-3">
 													{item.first_lines ?? item.content ?? ""}
 												</p>
 
 												<div className="mt-auto pt-3 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
-													<span>{item.source ?? "Unknown source"}</span>
+													<span>{item.source}</span>
 													<time>{dateStr}</time>
 												</div>
 											</div>
