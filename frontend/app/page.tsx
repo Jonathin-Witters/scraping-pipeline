@@ -5,6 +5,7 @@ import Image from "next/image";
 import { DataModel } from "./model";
 import { collection, getDocs, query, limit, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
+import Link from "next/link";
 
 type FetchState = {
 	items: DataModel[];
@@ -13,7 +14,7 @@ type FetchState = {
 };
 
 export default function Home() {
-	const sources = "VRT NWS, De Morgen, ..."; // Add used sources here
+	const sources = "VRT NWS, De Standaard, ..."; // Add used sources here
 
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
 
@@ -59,31 +60,40 @@ export default function Home() {
 	];
 
 	// Firebase configuration
-	// const firebaseConfig = {};
-	// const app = initializeApp(firebaseConfig);
-	// const db = getFirestore(app);
+	const firebaseConfig = {
+		apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+		authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+		projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+		storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+		messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+		appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+		measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+	};
+
+	const app = initializeApp(firebaseConfig);
+	const db = getFirestore(app);
 
 	useEffect(() => {
-		// const fetchArticles = async () => {
-		// 	try {
-		// 		const q = query(collection(db, "news"), limit(50));
-		// 		const querySnapshot = await getDocs(q);
-		// 		const data: DataModel[] = querySnapshot.docs.map((doc) => ({
-		// 			...(doc.data() as DataModel),
-		// 		}));
-		// 		setState({ items: data, loading: false });
-		// 	} catch (err: any) {
-		// 		setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
-		// 	}
-		// };
-		// 
-		// fetchArticles();
+		const fetchArticles = async () => {
+			try {
+				const q = query(collection(db, "articles"), limit(50));
+				const querySnapshot = await getDocs(q);
+				const data: DataModel[] = querySnapshot.docs.map((doc) => ({
+					...(doc.data() as DataModel),
+				}));
+				setState({ items: data, loading: false });
+			} catch (err: any) {
+				setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
+			}
+		};
+
+		fetchArticles();
 
 		// Used for UI testing
-		setState({
-			items: testItems.sort((a, b) => b.date.getTime() - a.date.getTime()), // Sort by recency
-			loading: false,
-		});
+		// setState({
+		// 	items: testItems.sort((a, b) => b.date.getTime() - a.date.getTime()), // Sort by recency
+		// 	loading: false,
+		// });
 	}, []);
 
 	return (
@@ -113,36 +123,38 @@ export default function Home() {
 											key={item.title + item.source} // Should (realistically) guarantee uniqueness
 											className="flex flex-col bg-white dark:bg-zinc-900 rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-zinc-100 dark:border-zinc-800"
 										>
-											<div className="relative w-full h-40 bg-zinc-100 dark:bg-zinc-800">
-												{item.thumbnail ? (
-													<Image
-														src={item.thumbnail.toString()}
-														alt={item.title ?? "thumbnail"}
-														fill
-														style={{ objectFit: "cover" }}
-														sizes="(max-width: 768px) 100vw, 33vw"
-														unoptimized
-													/>
-												) : (
-													<div className="w-full h-full flex items-center justify-center text-zinc-400">
-														No image
-													</div>
-												)}
-											</div>
-
-											<div className="p-4 flex-1 flex flex-col">
-												<h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 line-clamp-2">
-													{item.title}
-												</h2>
-												<p className="mt-2 text-xs text-zinc-600 dark:text-zinc-300 line-clamp-3">
-													{item.first_lines ?? item.content ?? ""}
-												</p>
-
-												<div className="mt-auto pt-3 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
-													<span>{item.source}</span>
-													<time>{dateStr}</time>
+											<Link href={item.url ?? "#"}>
+												<div className="relative w-full h-40 bg-zinc-100 dark:bg-zinc-800">
+													{item.thumbnail ? (
+														<Image
+															src={item.thumbnail.toString()}
+															alt={item.title ?? "thumbnail"}
+															fill
+															style={{ objectFit: "cover" }}
+															sizes="(max-width: 768px) 100vw, 33vw"
+															unoptimized
+														/>
+													) : (
+														<div className="w-full h-full flex items-center justify-center text-zinc-400">
+															No image
+														</div>
+													)}
 												</div>
-											</div>
+
+												<div className="p-4 flex-1 flex flex-col">
+													<h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 line-clamp-2">
+														{item.title}
+													</h2>
+													<p className="mt-2 text-xs text-zinc-600 dark:text-zinc-300 line-clamp-3">
+														{item.first_lines ?? item.content ?? ""}
+													</p>
+
+													<div className="mt-auto pt-3 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
+														<span>{item.source}</span>
+														<time>{dateStr}</time>
+													</div>
+												</div>
+											</Link>
 										</article>
 									);
 								})}
