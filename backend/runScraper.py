@@ -1,4 +1,6 @@
 from bs4 import BeautifulSoup
+
+from DatabaseManager import DatabaseManager
 from parsers.deStandaard import DeStandaardArticleParser
 import requests
 
@@ -14,3 +16,7 @@ soup_article = BeautifulSoup(response.text, "html.parser")
 
 parser = DeStandaardArticleParser()
 parsed = parser.parse(soup_article)
+
+db_manager = DatabaseManager()
+db_manager.add_article(parsed)
+
