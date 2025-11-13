@@ -13,8 +13,8 @@ class Document:
     url: str
     source: str
     first_lines: str
-    thumbnail: str           # URL to image
-    tags: List[str] = field(default_factory=list)
+    thumbnail: str # url to image
+    tags: List[str]
     content: str = ""
 
 class ArticleParser():
