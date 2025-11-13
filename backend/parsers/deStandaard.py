@@ -13,7 +13,7 @@ class DeStandaardArticleParser(ArticleParser):
             url="test",
             source="DeStandaard",
             first_lines=self.parseIntro(article),
-            thumbnail=None,
+            thumbnail=self.parseImageUrl(article),
             tags=[],
             content=self.parseContent(article),
         )
@@ -38,6 +38,12 @@ class DeStandaardArticleParser(ArticleParser):
         paragraphs = content_section.find_all("p")
         text = "\n".join(p.get_text(strip=True) for p in paragraphs)
         return text
+
+    def parseImageUrl(self, article) -> str:
+        img = article.find_all("img")[0]
+        if img and img.has_attr("src"):
+            return img["src"]
+        return ""
 
     # def parseTags(self, article) -> List[str]:
 
