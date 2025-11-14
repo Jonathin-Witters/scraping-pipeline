@@ -13,7 +13,7 @@ from newsScraping.DatabaseManager import DatabaseManager
 class ValidationPipeline:
     def process_item(self, item, spider):
         # Check required fields
-        required_fields = ["title", "author", "first_lines"]
+        required_fields = ["title", "first_lines"]
         for field in required_fields:
             if not item.get(field):
                 # Discard the item if any required field is missing
