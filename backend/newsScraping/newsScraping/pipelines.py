@@ -5,7 +5,7 @@
 
 
 # useful for handling different item types with a single interface
-from itemadapter._imports import scrapy
+import scrapy
 
 from newsScraping.DatabaseManager import DatabaseManager
 

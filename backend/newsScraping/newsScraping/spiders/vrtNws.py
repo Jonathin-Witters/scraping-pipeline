@@ -55,7 +55,7 @@ class VrtNwsSpider(scrapy.Spider):
             "url": response.url,
             "source": "VRT NWS",
             "first_lines": response.css('div.text-on-surface-default.order-5.font-semibold.prose-article-body-r p::text').get(),
-            "thumbnail": response.css('img::attr(src)').get(),
+            "thumbnail": response.css('img::attr(src)').get().split('&blur')[0],
             "tags": response.css('div[data-sentry-component="DetailMore"] span::text').getall(),
             "content": response.css('div[data-sentry-component="ArticleText"] p::text').getall(),
         }
