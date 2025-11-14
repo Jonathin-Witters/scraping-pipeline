@@ -23,6 +23,16 @@ class VrtNwsSpider(scrapy.Spider):
         "https://www.vrt.be/vrtnws/en/"
     ]
 
+    custom_settings = {
+        'FEEDS': {
+            'data/vrt_nws.json': {
+                'format': 'json',
+                'overwrite': True,
+                'encoding': 'utf8'
+            }
+        }
+    }
+
     def start_requests(self):
         for url in self.start_urls:
             yield scrapy.Request(url=url, callback=self.parse)
