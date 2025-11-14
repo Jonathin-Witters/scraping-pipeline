@@ -21,8 +21,6 @@ class DatabaseManager:
         # Upload to Firestore
         self.collection.document(doc_id).set(data)
 
-        print(f"Article '{article.title}' uploaded successfully")
-
     def get_article(self, title: str) -> Document | None:
         doc_id = title.replace("/", "_")
         doc = self.collection.document(doc_id).get()
@@ -30,5 +28,4 @@ class DatabaseManager:
         if doc.exists:
             return Document.from_json(doc.to_dict())
         else:
-            print(f"Article '{title}' not found")
             return None

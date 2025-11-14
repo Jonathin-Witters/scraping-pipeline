@@ -1,3 +1,4 @@
+from typing import List
 from bs4 import BeautifulSoup
 from datetime import date
 from Article import ArticleParser, Document
@@ -14,7 +15,7 @@ class DeStandaardArticleParser(ArticleParser):
             source="DeStandaard",
             first_lines=self.parseIntro(article),
             thumbnail=self.parseImageUrl(article),
-            tags=[],
+            tags=self.parseTags(article),
             content=self.parseContent(article),
         )
 
@@ -45,6 +46,11 @@ class DeStandaardArticleParser(ArticleParser):
             return img["src"]
         return ""
 
-    # def parseTags(self, article) -> List[str]:
+    def parseTags(self, article) -> List[str]:
+        tag_section = article.find("div", class_="tag-list_tagContainer__UlWmA")
+        tag_urls = tag_section.find_all("a")
+        tags = [a.text.strip() for a in tag_urls]
+        print(tags)
+        return tags
 
     # def parseAuthor(self, article) -> str:
