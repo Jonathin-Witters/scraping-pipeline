@@ -6,6 +6,7 @@ from scrapy.utils.project import get_project_settings
 # Import spider implementations
 from newsScraping.spiders.DeStandaard import DeStandaardSpider
 from newsScraping.spiders.vrtNws import VrtNwsSpider
+from newsScraping.spiders.DeMorgen import DeMorgenSpider
 
 
 def run_spiders():
@@ -13,6 +14,7 @@ def run_spiders():
     process = CrawlerProcess(settings)
     process.crawl(VrtNwsSpider)
     process.crawl(DeStandaardSpider)
+    process.crawl(DeMorgenSpider)
     process.start()
 
 if __name__ == "__main__":
