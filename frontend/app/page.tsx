@@ -120,7 +120,9 @@ export default function Home() {
 						<div className="overflow-auto pr-2">
 							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 								{state.items.map((item) => {
-									const dateStr = item.date ? new Date(item.date).toLocaleString() : "Unknown date";
+									const dateStr = item.date
+										? new Date(item.date).toLocaleString() + " (UTC)"
+										: "Unknown date";
 									return (
 										<article
 											key={item.title + item.source} // Should (realistically) guarantee uniqueness
