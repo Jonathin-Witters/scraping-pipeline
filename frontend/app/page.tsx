@@ -14,7 +14,7 @@ type FetchState = {
 };
 
 export default function Home() {
-	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad,  ..."; // Add used sources here
+	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad, HBVL"; // Add used sources here
 
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
 
@@ -76,12 +76,15 @@ export default function Home() {
 	useEffect(() => {
 		const fetchArticles = async () => {
 			try {
-				const q = query(collection(db, "articles"), limit(50));
+				const q = query(collection(db, "articles"));
 				const querySnapshot = await getDocs(q);
 				const data: DataModel[] = querySnapshot.docs.map((doc) => ({
 					...(doc.data() as DataModel),
 				}));
-				setState({ items: data, loading: false });
+				setState({
+					items: data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+					loading: false,
+				});
 			} catch (err: any) {
 				setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
 			}

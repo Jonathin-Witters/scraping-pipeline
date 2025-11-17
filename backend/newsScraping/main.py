@@ -8,6 +8,7 @@ from newsScraping.spiders.DeStandaard import DeStandaardSpider
 from newsScraping.spiders.vrtNws import VrtNwsSpider
 from newsScraping.spiders.DeMorgen import DeMorgenSpider
 from newsScraping.spiders.Nieuwsblad import NieuwsbladSpider
+from newsScraping.spiders.HBVL import HBVLSpider
 
 
 def run_spiders():
@@ -17,6 +18,7 @@ def run_spiders():
     process.crawl(DeStandaardSpider)
     process.crawl(DeMorgenSpider)
     process.crawl(NieuwsbladSpider)
+    process.crawl(HBVLSpider)
     process.start()
 
 if __name__ == "__main__":
