@@ -14,7 +14,7 @@ type FetchState = {
 };
 
 export default function Home() {
-	const sources = "VRT NWS, De Standaard, ..."; // Add used sources here
+	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad,  ..."; // Add used sources here
 
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
 
