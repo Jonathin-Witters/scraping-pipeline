@@ -3,7 +3,15 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { DataModel } from "./model";
-import { collection, getDocs, query, limit, getFirestore } from "firebase/firestore";
+import {
+	collection,
+	getDocs,
+	query,
+	limit,
+	getFirestore,
+	orderBy,
+	startAfter,
+} from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import Link from "next/link";
 
@@ -17,6 +25,12 @@ export default function Home() {
 	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad, HBVL"; // Add used sources here
 
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
+
+	const [lastDoc, setLastDoc] = useState<any>(null);
+
+	const page_size = 100; // Number of articles to fetch at a time
+
+	const [loadingMore, setLoadingMore] = useState(false); // for "Load More" button
 
 	// used for UI testing
 	const testItems: DataModel[] = [
@@ -73,23 +87,47 @@ export default function Home() {
 	const app = initializeApp(firebaseConfig);
 	const db = getFirestore(app);
 
-	useEffect(() => {
-		const fetchArticles = async () => {
-			try {
-				const q = query(collection(db, "articles"));
-				const querySnapshot = await getDocs(q);
-				const data: DataModel[] = querySnapshot.docs.map((doc) => ({
-					...(doc.data() as DataModel),
-				}));
-				setState({
-					items: data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-					loading: false,
-				});
-			} catch (err: any) {
-				setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
-			}
-		};
+	const fetchArticles = async () => {
+		try {
+			// Query to fetch only most recent articles, and setting up for pagination
+			const q = lastDoc
+				? query(
+						collection(db, "articles"),
+						orderBy("date", "desc"),
+						startAfter(lastDoc),
+						limit(page_size)
+				  )
+				: query(collection(db, "articles"), orderBy("date", "desc"), limit(page_size));
+			const querySnapshot = await getDocs(q);
 
+			// Keep track of last seen document for pagination
+			const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+			setLastDoc(lastVisible);
+
+			// Map documents to DataModel
+			const data: DataModel[] = querySnapshot.docs.map((doc) => ({
+				...(doc.data() as DataModel),
+			}));
+			setState((prev) => ({
+				...prev,
+				items: [
+					...prev.items,
+					...data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+				],
+				loading: false,
+			}));
+		} catch (err: any) {
+			setState({ items: [], loading: false, error: err?.message ?? "Failed to load" });
+		}
+	};
+
+	const loadMore = async () => {
+		setLoadingMore(true);
+		await fetchArticles();
+		setLoadingMore(false);
+	};
+
+	useEffect(() => {
 		fetchArticles();
 
 		// Used for UI testing
@@ -165,6 +203,17 @@ export default function Home() {
 								})}
 							</div>
 						</div>
+					</div>
+				)}
+				{!state.loading && state.items.length > 0 && (
+					<div className="w-full flex justify-center my-6">
+						<button
+							onClick={loadMore}
+							disabled={loadingMore || !lastDoc}
+							className="px-4 py-2 rounded bg-zinc-900 text-white dark:bg-zinc-200 dark:text-black disabled:opacity-50"
+						>
+							{loadingMore ? "Loading..." : lastDoc ? "Load more" : "No more articles"}
+						</button>
 					</div>
 				)}
 			</main>
