@@ -110,10 +110,7 @@ export default function Home() {
 			}));
 			setState((prev) => ({
 				...prev,
-				items: [
-					...prev.items,
-					...data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-				],
+				items: [...prev.items, ...data],
 				loading: false,
 			}));
 		} catch (err: any) {
