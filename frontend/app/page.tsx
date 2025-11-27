@@ -22,9 +22,9 @@ type FetchState = {
 };
 
 export default function Home() {
-	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad, HBVL"; // Add used sources here
+	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad, HBVL, Telegraaf, GVA"; // Add used sources here
 
-	const collections = ["vrtnws", "demorgen", "destandaard", "nieuwsblad", "hbvl"]; // Firestore collection names
+	const collections = ["vrtnws", "demorgen", "destandaard", "nieuwsblad", "hbvl", "telegraaf", "gva"]; // Firestore collection names
 
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
 

@@ -57,5 +57,5 @@ class GVASpider(scrapy.Spider):
             "first_lines": response.css('h2[class="Paragraph_paragraph__exhQA Paragraph_paragraph--default-sm-strong___Nf9m articleParagraph story-intro_storyIntro__7SJ5Q"]::text').get(),
             "thumbnail": response.css('img::attr(srcset)').get().split(',')[0],
             "tags": response.css('a[data-testid="article-tag"]::text').getall(),
-            "content": " ".join(response.css('p[class="Paragraph_paragraph__exhQA Paragraph_paragraph--default-sm-default__jy0uG articleParagraph"]::text').getall()),
+            "content": response.css('p[class="Paragraph_paragraph__exhQA Paragraph_paragraph--default-sm-default__jy0uG articleParagraph"]::text').getall(),
         }

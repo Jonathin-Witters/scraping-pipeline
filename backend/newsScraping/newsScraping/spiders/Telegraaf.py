@@ -57,5 +57,5 @@ class TelegraafSpider(scrapy.Spider):
             "first_lines": response.css('h2[data-testid="article-intro"]::text').get(),
             "thumbnail": response.css('img::attr(srcset)').get().split(',')[0],
             "tags": response.css('a[data-testid="article-tag"]::text').getall(),
-            "content": ' '.join(response.css('section[data-testid="article-body"] p::text').getall()),
+            "content": response.css('section[data-testid="article-body"] p::text').getall(),
         }

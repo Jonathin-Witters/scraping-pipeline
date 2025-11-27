@@ -15,6 +15,8 @@ class DatabaseManager:
         self.destandaard_collection = self.client.collection('destandaard')
         self.nieuwsblad_collection = self.client.collection('nieuwsblad')
         self.hbvl_collection = self.client.collection('hbvl')
+        self.telegraaf_collection = self.client.collection('telegraaf')
+        self.gva_collection = self.client.collection('gva')
 
     def save_article(self, json_data):
         # self.collection.document(json_data["title"]).set(json_data) // Previously used as single collection
@@ -29,3 +31,7 @@ class DatabaseManager:
                 self.nieuwsblad_collection.document(json_data["title"]).set(json_data)
             case "HBVL":
                 self.hbvl_collection.document(json_data["title"]).set(json_data)
+            case "Telegraaf":
+                self.telegraaf_collection.document(json_data["title"]).set(json_data)
+            case "GVA":
+                self.gva_collection.document(json_data["title"]).set(json_data)
