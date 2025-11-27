@@ -59,5 +59,3 @@ class NieuwsbladSpider(scrapy.Spider):
             "tags": response.css('a[data-testid="article-tag"]::text').getall(),
             "content": response.css('section[data-testid="article-body"] p::text').getall(),
         }
-        
-        
