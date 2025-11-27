@@ -33,6 +33,15 @@ export default function Home() {
 
 	const page_size = 100; // Number of articles to fetch at a time
 
+	// Optional heuristic to support balanced fetching, especially when considering loads of sources
+	// possible con: may not show the absolute most recent page_size articles
+	// but pro #1: ensures more variety in displayed sources (which is considered a goal of a news aggregator)
+	// and pro #2: reduces the amount of data transferred from the backend when many sources are used, improving scalability
+	// the math.ceil part ensures enough articles are fetched when few sources are used
+	// the + page_size / 10 adds a small buffer to, even with many sources, allow multiple recent articles from the same source to be shown, 
+	// avoiding stale sources to stay presented
+	const adjusted_page_size = Math.ceil(page_size / collections.length) + page_size / 10;
+
 	const [loadingMore, setLoadingMore] = useState(false); // for "Load More" button
 
 	// used for UI testing
@@ -125,9 +134,9 @@ export default function Home() {
 							collection(db, collectionName),
 							orderBy("date", "desc"),
 							startAfter(lastDocTime),
-							limit(page_size)
+							limit(adjusted_page_size)
 					  )
-					: query(collection(db, collectionName), orderBy("date", "desc"), limit(page_size))
+					: query(collection(db, collectionName), orderBy("date", "desc"), limit(adjusted_page_size))
 			);
 
 			// Fetch data from all collections
