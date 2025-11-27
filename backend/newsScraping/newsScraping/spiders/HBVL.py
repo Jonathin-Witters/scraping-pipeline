@@ -17,15 +17,15 @@ import scrapy
 # } 
 
 
-class NieuwsbladSpider(scrapy.Spider):
-    name = "nieuwsblad"
+class HBVLSpider(scrapy.Spider):
+    name = "HBVL"
     start_urls = [
-        "https://www.nieuwsblad.be"
+        "https://www.hbvl.be"
     ]
 
     custom_settings = {
         'FEEDS': {
-            'data/nieuwsblad.json': {
+            'data/HBVL.json': {
                 'format': 'json',
                 'overwrite': True,
                 'encoding': 'utf8'
@@ -43,7 +43,7 @@ class NieuwsbladSpider(scrapy.Spider):
             yield response.follow(article_url, self.parse_article)
 
         page = response.url.split("/")[-2] or "index"
-        filename = f"nieuwsblad-{page}.html"
+        filename = f"HBVL-{page}.html"
         Path(filename).write_bytes(response.body)
         self.log(f"Saved file {filename}")
 
@@ -53,8 +53,8 @@ class NieuwsbladSpider(scrapy.Spider):
             "date": response.css('time::attr(datetime)').get(),
             "author": response.css('p[data-testid="author-name"]::text').get(),
             "url": response.url,
-            "source": "Nieuwsblad",
-            "first_lines": response.css('h2[data-testid="article-intro"]::text').get(),
+            "source": "HBVL",
+            "first_lines": response.css('h2[data-testid="article-intro"]::text').getall()[0],
             "thumbnail": response.css('img::attr(srcset)').get().split(',')[0],
             "tags": response.css('a[data-testid="article-tag"]::text').getall(),
             "content": response.css('section[data-testid="article-body"] p::text').getall(),

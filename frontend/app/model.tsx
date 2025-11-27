@@ -8,5 +8,5 @@ export interface DataModel {
 	thumbnail: URL;
 	tags: string[];
 	first_lines: string;
-	content: string;
+	content: string[];
 }
