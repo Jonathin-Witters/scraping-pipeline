@@ -49,15 +49,15 @@ class NieuwsbladSpider(scrapy.Spider):
 
     def parse_article(self, response):
         yield {
-            "title": response.css('h1[class="Heading_heading__g_Vyj Heading_heading--2xl__XYmSS story-headline_storyHeadlineHeading__3WzwH"]::text').get(),
+            "title": response.css('h1[data-testid="article-headline"]::text').get(),
             "date": response.css('time::attr(datetime)').get(),
             "author": response.css('p[data-testid="author-name"]::text').get(),
             "url": response.url,
             "source": "Nieuwsblad",
-            "first_lines": response.css('h2[class="Paragraph_paragraph__nQNQ9 Paragraph_paragraph--default-sm-strong__IZ8XV articleParagraph story-intro_storyIntro__7SJ5Q"]::text').get(),
+            "first_lines": response.css('h2[data-testid="article-intro"]::text').get(),
             "thumbnail": response.css('img::attr(srcset)').get().split(',')[0],
             "tags": response.css('a[data-testid="article-tag"]::text').getall(),
-            "content": response.css('p[class="Paragraph_paragraph__nQNQ9 Paragraph_paragraph--default-sm-default__bs4Xa articleParagraph"]::text').getall(),
+            "content": response.css('section[data-testid="article-body"] p::text').getall(),
         }
         
         

@@ -24,9 +24,12 @@ type FetchState = {
 export default function Home() {
 	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad, HBVL"; // Add used sources here
 
+	const collections = ["vrtnws", "demorgen", "destandaard", "nieuwsblad", "hbvl"]; // Firestore collection names
+
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
 
-	const [lastDoc, setLastDoc] = useState<any>(null);
+	// const [lastDoc, setLastDoc] = useState<any>(null); // previously used for single collection
+	const [lastDocTime, setLastDocTime] = useState<Date | null>(null); // for multi-collection pagination
 
 	const page_size = 100; // Number of articles to fetch at a time
 
@@ -44,7 +47,7 @@ export default function Home() {
 			tags: ["tag1", "tag2"],
 			first_lines:
 				"First lines of article 1, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
-			content: "Full content of article 1",
+			content: ["Full content of article 1"],
 		},
 		{
 			title: "Artikel 2",
@@ -56,7 +59,7 @@ export default function Home() {
 			tags: ["tag1", "tag2"],
 			first_lines:
 				"First lines of article 2, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
-			content: "Full content of article 2",
+			content: ["Full content of article 2"],
 		},
 		{
 			title: "Artikel 3",
@@ -68,7 +71,7 @@ export default function Home() {
 			tags: ["tag1", "tag2"],
 			first_lines:
 				"First lines of article 3, just some random stuff. Want this to be like about two sentences long or something. This should be enough.",
-			content: "Full content of article 3",
+			content: ["Full content of article 3"],
 		},
 		// Extend for testing overflows, scrolling, ...
 	];
@@ -90,27 +93,62 @@ export default function Home() {
 	const fetchArticles = async () => {
 		try {
 			// Query to fetch only most recent articles, and setting up for pagination
-			const q = lastDoc
-				? query(
-						collection(db, "articles"),
-						orderBy("date", "desc"),
-						startAfter(lastDoc),
-						limit(page_size)
-				  )
-				: query(collection(db, "articles"), orderBy("date", "desc"), limit(page_size));
-			const querySnapshot = await getDocs(q);
 
-			// Keep track of last seen document for pagination
-			const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
-			setLastDoc(lastVisible);
+			// Previously used single collection
+			// const q = lastDoc
+			// 	? query(
+			// 			collection(db, "articles"),
+			// 			orderBy("date", "desc"),
+			// 			startAfter(lastDoc),
+			// 			limit(page_size)
+			// 	  )
+			// 	: query(collection(db, "articles"), orderBy("date", "desc"), limit(page_size));
+			// const querySnapshot = await getDocs(q);
+			//
+			// // Keep track of last seen document for pagination
+			// const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+			// setLastDoc(lastVisible);
+			//
+			// // Map documents to DataModel
+			// const data: DataModel[] = querySnapshot.docs.map((doc) => ({
+			// 	...(doc.data() as DataModel),
+			// }));
+			// setState((prev) => ({
+			// 	...prev,
+			// 	items: [...prev.items, ...data],
+			// 	loading: false,
+			// }));
 
-			// Map documents to DataModel
-			const data: DataModel[] = querySnapshot.docs.map((doc) => ({
-				...(doc.data() as DataModel),
-			}));
+			const queries = collections.map((collectionName) =>
+				lastDocTime
+					? query(
+							collection(db, collectionName),
+							orderBy("date", "desc"),
+							startAfter(lastDocTime),
+							limit(page_size)
+					  )
+					: query(collection(db, collectionName), orderBy("date", "desc"), limit(page_size))
+			);
+
+			// Fetch data from all collections
+			const querySnapshots = await Promise.all(queries.map((q) => getDocs(q)));
+
+			// Combine all documents into one array
+			const allDocs = querySnapshots.flatMap((snapshot) =>
+				snapshot.docs.map((doc) => ({ ...(doc.data() as DataModel), id: doc.id }))
+			);
+
+			// Sort combined documents by date (most recent first) and take the top `page_size`
+			const sortedDocs = allDocs
+				.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+				.slice(0, page_size);
+
+			// Update lastDocTime to the last document's date in the sorted list
+			setLastDocTime(sortedDocs[sortedDocs.length - 1]?.date);
+
 			setState((prev) => ({
 				...prev,
-				items: [...prev.items, ...data],
+				items: [...prev.items, ...sortedDocs],
 				loading: false,
 			}));
 		} catch (err: any) {
@@ -163,7 +201,7 @@ export default function Home() {
 											key={item.title + item.source} // Should (realistically) guarantee uniqueness
 											className="flex flex-col bg-white dark:bg-zinc-900 rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-zinc-100 dark:border-zinc-800"
 										>
-											<Link href={item.url ?? "#"}>
+											<Link href={item.url ?? "#"} target="_blank">
 												<div className="relative w-full h-40 bg-zinc-100 dark:bg-zinc-800">
 													{item.thumbnail ? (
 														<Image
@@ -186,7 +224,7 @@ export default function Home() {
 														{item.title}
 													</h2>
 													<p className="mt-2 text-xs text-zinc-600 dark:text-zinc-300 line-clamp-3">
-														{item.first_lines ?? item.content ?? ""}
+														{item.first_lines ?? item.content[0] ?? ""}
 													</p>
 
 													<div className="mt-auto pt-3 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
@@ -206,10 +244,12 @@ export default function Home() {
 					<div className="w-full flex justify-center my-6">
 						<button
 							onClick={loadMore}
-							disabled={loadingMore || !lastDoc}
-							className="px-4 py-2 rounded bg-zinc-900 text-white dark:bg-zinc-200 dark:text-black disabled:opacity-50"
+							disabled={loadingMore || !lastDocTime} // !lastDoc if using single collection
+							className="px-4 py-2 rounded bg-zinc-900 text-white dark:bg-zinc-200 dark:text-black disabled:opacity-50 hover:cursor-pointer disabled:hover:cursor-not-allowed"
 						>
-							{loadingMore ? "Loading..." : lastDoc ? "Load more" : "No more articles"}
+							{
+								loadingMore ? "Loading..." : lastDocTime ? "Load more" : "No more articles" // lastDoc if using single collection
+							}
 						</button>
 					</div>
 				)}

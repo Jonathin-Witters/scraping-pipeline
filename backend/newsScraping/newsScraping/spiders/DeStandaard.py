@@ -52,10 +52,10 @@ class DeStandaardSpider(scrapy.Spider):
             "author": response.css('p[data-testid="author-name"]::text').get(),
             "url": response.url,
             "source": "De Standaard",
-            "first_lines": response.css('h2[data-testid="article-intro"]::text').get(),
+            "first_lines": "".join(response.css('h2[data-testid="article-intro"]::text').getall()),
             "thumbnail": response.css('img::attr(src)').get(),
             "tags": response.css('a[data-testid="article-tag"]::text').getall(),
-            "content": "TODO",
+            "content": response.css('section[data-testid="article-body"] p::text').getall(),
         }
 
     def is_paywalled(self, response) -> bool:

@@ -56,6 +56,6 @@ class HBVLSpider(scrapy.Spider):
             "source": "HBVL",
             "first_lines": response.css('h2[data-testid="article-intro"]::text').getall()[0],
             "thumbnail": response.css('img::attr(srcset)').get().split(',')[0],
-            "tags": response.css('a[class="Tag_tag__xnKMM"]::text').getall(),
-            "content": " ".join(response.css('p[class="Paragraph_paragraph__nQNQ9 Paragraph_paragraph--default-sm-default__bs4Xa articleParagraph"]::text').getall()),
+            "tags": response.css('a[data-testid="article-tag"]::text').getall(),
+            "content": response.css('section[data-testid="article-body"] p::text').getall(),
         }

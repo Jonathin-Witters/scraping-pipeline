@@ -57,5 +57,5 @@ class DeMorgenSpider(scrapy.Spider):
             "first_lines": response.css('p[data-test-id="header-intro"]::text').getall()[0],
             "thumbnail": response.css('img::attr(srcset)').get().split(',')[0],
             "tags": response.css('span[data-test-id="article-sublabel"]::text').getall(),
-            "content": response.css('p[class="z3lfzo5 z3lfzo0 _1iobnq20"]::text').getall()[0],
+            "content": response.css('p::text').getall(),
         }
