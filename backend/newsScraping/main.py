@@ -10,8 +10,9 @@ from newsScraping.spiders.DeStandaard import DeStandaardSpider
 from newsScraping.spiders.vrtNws import VrtNwsSpider
 from newsScraping.spiders.DeMorgen import DeMorgenSpider
 from newsScraping.spiders.Nieuwsblad import NieuwsbladSpider
+from newsScraping.spiders.GVA import GVASpider
 
-spiders = [VrtNwsSpider, DeStandaardSpider, DeMorgenSpider, NieuwsbladSpider]
+spiders = [VrtNwsSpider, DeStandaardSpider, DeMorgenSpider, NieuwsbladSpider, GVASpider]
 
 def run_single_spider(spider_class):
     process = CrawlerProcess(get_project_settings())
