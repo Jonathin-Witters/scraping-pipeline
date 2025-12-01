@@ -23,7 +23,6 @@ type FetchState = {
 
 export default function Home() {
 	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad, HBVL, Telegraaf, GVA, De Volkskrant"; // Add used sources here
-
 	const collections = ["vrtnws", "demorgen", "destandaard", "nieuwsblad", "hbvl", "telegraaf", "gva", "devolkskrant"]; // Firestore collection names
 
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
