@@ -27,6 +27,7 @@ class DatabaseManager:
         self.hbvl_collection = self.client.collection('hbvl')
         self.telegraaf_collection = self.client.collection('telegraaf')
         self.gva_collection = self.client.collection('gva')
+        self.devolkskrant_collection = self.client.collection('devolkskrant')
         self.jobs_collection = self.client.collection('jobs')
 
     def save_article(self, json_data):
@@ -46,6 +47,8 @@ class DatabaseManager:
                 self.telegraaf_collection.document(json_data["title"]).set(json_data)
             case "GVA":
                 self.gva_collection.document(json_data["title"]).set(json_data)
+            case "De Volkskrant":
+                self.devolkskrant_collection.document(json_data["title"]).set(json_data)
 
     def get_work_batch(self, size):
         jobs = self.jobs_collection

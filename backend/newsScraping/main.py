@@ -14,15 +14,17 @@ from newsScraping.spiders.Nieuwsblad import NieuwsbladSpider
 from newsScraping.spiders.HBVL import HBVLSpider
 from newsScraping.spiders.Telegraaf import TelegraafSpider
 from newsScraping.spiders.GVA import GVASpider
+from newsScraping.spiders.DeVolkskrant import DeVolkskrantSpider
 
 spiders = {
     "destandaard": DeStandaardSpider,
     "vrtnws": VrtNwsSpider,
-    "dedorgen": DeMorgenSpider,
+    "demorgen": DeMorgenSpider,
     "nieuwsblad": NieuwsbladSpider,
     "hbvl": HBVLSpider,
     "telegraaf": TelegraafSpider,
     "gva": GVASpider,
+    "devolkskrant": DeVolkskrantSpider,
 }
 
 

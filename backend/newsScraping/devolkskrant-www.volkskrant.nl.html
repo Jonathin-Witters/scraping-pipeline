@@ -1,0 +1,3089 @@
+<!DOCTYPE html>
+<html lang="nl-NL" class="is-overview-page    is-volkskrant "> <head>  <meta charset="utf-8"> <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,viewport-fit=cover">  <meta property="al:ios:url" content="volkskrant-fb-applink://volkskrant.nl/nieuws"> <meta property="al:ios:app_store_id" content="418873064"> <meta property="al:ios:app_name" content="de Volkskrant"> <meta property="al:android:url" content="vk-fb-applink://volkskrant/nieuws"> <meta property="al:android:app_name" content="de Volkskrant"> <meta property="al:android:package" content="be.persgroep.android.news.mobilevk"> <meta property="al:web:url" content="https://www.volkskrant.nl/nieuws">     <script> if (
+        document.cookie.indexOf('enableSentry_v1=true') !== -1 && // akamai lottery is sampling
+        document.cookie.indexOf('sel_tcf20_marketing=1') !== -1 // marketing consent
+    ) {
+        const mainScript = () => {
+            return new Promise(function(resolve, reject) {
+                const script = document.createElement('script')
+                script.crossOrigin = 'anonymous'
+                script.integrity = 'sha384-4Wr4V/uREn/Xw4C/neUC3VQsBQUZjXZqsv/rtoiol5dvcyPNoevLf0F0MjhqVdmp'
+                script.src = 'https://browser.sentry-cdn.com/7.73.0/bundle.tracing.replay.min.js'
+                script.async = false;
+                script.onload = () => {
+                    resolve();
+                };
+                script.onerror = () => {
+                    reject('sentry first script failed');
+                };
+                document.head.insertAdjacentElement("afterbegin", script);
+            });
+        };
+        const httpClientScript = () => {
+            return new Promise(function(resolve, reject) {
+                const script = document.createElement('script')
+                script.crossOrigin = 'anonymous'
+                script.integrity = 'sha384-CDvRVWw/2VM7gMy1gzaZYWWzMPENFdPmlj7lvqPTqm0mQ3VHCI2DqeaXuZkZQcmu'
+                script.src = 'https://browser.sentry-cdn.com/7.73.0/httpclient.min.js'
+                script.async = false;
+                script.onload = () => {
+                    resolve();
+                };
+                script.onerror = () => {
+                    reject('sentry second script failed');
+                };
+                document.head.insertAdjacentElement('afterbegin', script);
+            });
+        };
+
+
+        Promise.all([mainScript(),httpClientScript()]).then(function() {
+            Sentry.init({
+                dsn: 'https://78a23422bc27431fb8218e546800bcb1@o1289016.ingest.sentry.io/4504649415327744',
+                integrations: [
+                    new Sentry.BrowserTracing(),
+                    new Sentry.Replay({
+                        blockAllMedia: false,
+                    }),
+                    new Sentry.Integrations.HttpClient()
+                ],
+                sendDefaultPii: false,
+                release: "vk-go-web",
+                environment: window.location.hostname.replace('www.', ''),
+                // The sample rate is decided by Akamai cookie, so the sentry sample rate (0-1) should be set to 1 to allow all traffic.
+                tracesSampleRate: 1,
+                replaysSessionSampleRate: 1,
+                failedRequestStatusCodes: [400, 599]
+            })
+        }).catch((script)=> {
+            console.log(script, 'failed to load!');
+        });
+    } </script>      <title>Net binnen </title>  <meta name="description" content="Het laatste nieuws met duiding van redacteuren, achtergronden, columns, opinie, wetenschap, en recensies van kunst &amp;amp; cultuur door de Volkskrant.">     <meta property="og:type" content="website"> <meta property="og:site_name" content="de Volkskrant"> <meta property="og:locale" content="nl_NL"> <meta property="og:title" content="Net binnen"> <meta property="og:description" content="Het laatste nieuws met duiding van redacteuren, achtergronden, columns, opinie, wetenschap, en recensies van kunst &amp;amp; cultuur door de Volkskrant."> <meta property="og:image" content="https://www.volkskrant.nl/sel-static/shared/images/volkskrant-logo.png">    <link rel="preconnect" href="https://myprivacy.dpgmedia.net"> <link rel="preconnect" href="https://login-static.dpgmedia.net"> <link rel="preconnect" href="https://advertising-cdn.dpgmedia.cloud"> <link rel="preconnect" href="https://www.googletagmanager.com"> <link rel="dns-prefetch" href="https://myprivacy.dpgmedia.net"> <link rel="dns-prefetch" href="https://login-static.dpgmedia.net"> <link rel="dns-prefetch" href="https://advertising-cdn.dpgmedia.cloud"> <link rel="dns-prefetch" href="https://www.googletagmanager.com"> <script> window.APP = {
+        config: {
+            connection: {},
+            dfp: JSON.parse(null),
+            sessionCookieName: "VK_SESSION",
+            cookieDomain: "volkskrant.nl",
+            baseUrl: "https:\/\/www.volkskrant.nl",
+            interDomainSsoBannerConfig: "NL-Newspaper",
+            interDomainSsoEnabled: true,
+            siteName: "de Volkskrant",
+            pipBaseUrl: "https:\/\/login2.volkskrant.nl",
+            brandName: "volkskrant",
+        },
+        helpers: {
+            waitUntilTrue: function waitUntilTrue(fn, successCb, errorCb, delayBetweenIterations, maxIterations, _currIteration) {
+                if (!_currIteration) {
+                    setTimeout(function () {
+                        window.APP.helpers.waitUntilTrue(fn, successCb, errorCb, delayBetweenIterations, maxIterations, 1)
+                    }, 0);
+                    return;
+                }
+
+                if (fn()) {
+                    if (typeof successCb === 'function') {
+                        successCb();
+                    }
+                } else if (_currIteration < maxIterations) {
+                    setTimeout(function () {
+                        window.APP.helpers.waitUntilTrue(fn, successCb, errorCb, delayBetweenIterations, maxIterations, _currIteration + 1)
+                    }, delayBetweenIterations);
+                } else {
+                    if (typeof errorCb === 'function') {
+                        errorCb();
+                    }
+                }
+            },
+            debounce: function(func, wait) {
+                let timeout;
+
+                return function executedFunction() {
+                    const context = this,
+                        args = arguments;
+
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function() {
+                        timeout = null;
+                        func.apply(context, args);
+                    }, wait);
+                };
+            },
+            runWhenInBreakpoint: function(breakpoints, fn) {
+                function _getActiveBreakpoint() {
+                    if (1320 <= window.innerWidth) {
+                        return 'xlarge';
+                    }
+
+                    if (960 <= window.innerWidth) {
+                        return 'large';
+                    }
+
+                    if (640 <= window.innerWidth) {
+                        return 'medium';
+                    }
+
+                    return 'small';
+                }
+
+                const onResize = window.APP.helpers.debounce(function() {
+                    if (breakpoints[_getActiveBreakpoint()]) {
+                        fn();
+                    }
+                    window.removeEventListener('resize', onResize);
+                }, 100);
+
+                if (breakpoints[_getActiveBreakpoint()]) {
+                    fn();
+                } else {
+                    window.addEventListener('resize', onResize);
+                }
+            }
+        },
+        modules: {
+            advertising: {
+                initialized: false,
+                adSlots: null,
+                paywallContentId: null,
+                isAdvertorialArticle: false,
+            },
+            temptation: {
+                executed: false,
+                showPaywall: false
+            }
+        },
+        supported: {
+            idleCallback: "requestIdleCallback" in window
+        }
+    };
+
+    window.dataLayer = [JSON.parse("{\"screen_info\":{\"page_type\":\"other\",\"page_brand_name\":\"de Volkskrant\",\"page_platform_type\":\"website\",\"page_identifier\":\"live_feed\"}}")]; </script>   <script type="text/javascript">window.lightningjs||function(l){function e(e,n){var i,u,p,t,r,a;return n&&(n+=(/\?/.test(n)?"&":"?")+"lv=1"),l[e]||(i=window,u=document,p=e,t=u.location.protocol,r="load",a=0,function(){l[p]=function(){var e=arguments,n=this,o=++a,t=n&&n!=i&&n.id||0;function d(){return d.id=o,l[p].apply(d,arguments)}return(s.s=s.s||[]).push([o,t,e]),d.then=function(e,n,t){var i=s.fh[o]=s.fh[o]||[],r=s.eh[o]=s.eh[o]||[],a=s.ph[o]=s.ph[o]||[];return e&&i.push(e),n&&r.push(n),t&&a.push(t),d},d};var s=l[p]._={};function e(){s.P(r),s.w=1,l[p]("_load")}s.fh={},s.eh={},s.ph={},s.l=n?n.replace(/^\/\//,("https:"==t?t:"http:")+"//"):n,s.p={0:+new Date},s.P=function(e){s.p[e]=new Date-s.p[0]},s.w&&e(),i.addEventListener?i.addEventListener(r,e,!1):i.attachEvent("onload",e);var h=function(){function n(){return["<!DOCTYPE ",i,"><",i,"><head></head><",e,"><",t,' src="',s.l,'"></',t,"></",e,"></",i,">"].join("")}var e="body",t="script",i="html",r=u[e];if(!r)return setTimeout(h,100);s.P(1);var a,o=u.createElement("div"),d=o.appendChild(u.createElement("div")),l=u.createElement("iframe");o.style.display="none",r.insertBefore(o,r.firstChild).id="lightningjs-"+p,l.frameBorder="0",l.id="lightningjs-frame-"+p,/MSIE[ ]+6/.test(navigator.userAgent)&&(l.src="javascript:false"),l.allowTransparency="true",d.appendChild(l);try{l.contentWindow.document.open()}catch(n){s.domain=u.domain,a="javascript:var d=document.open();d.domain='"+u.domain+"';",l.src=a+"void(0);"}try{var c=l.contentWindow.document;c.write(n()),c.close()}catch(e){l.src=a+'d.write("'+n().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}s.P(2)};s.l&&h()}()),l[e].lv="1",l[e]}var n=window.lightningjs=e("lightningjs");n.require=e,n.modules=l}({}),window.usabilla_live=lightningjs.require("usabilla_live","//w.usabilla.com/41485be8eca5.js"),window.usabilla_live("hide")</script>  <script>window._privacy=window._privacy||[]</script>  <link rel="stylesheet" href="https://www.volkskrant.nl/sel-static/shared-assets/css/volkskrant-fontfaces-25-11-2025.css">  <link rel="stylesheet" href="/static/main-cb0edb607f.css">    <link rel="stylesheet" href="https://www.volkskrant.nl/sel-static/teasers/volkskrant-main-87c3daf0a4.css">        <script async src="https://login-static.dpgmedia.net/ssosession/main.js"></script>  <script>window.dataLayer=window.dataLayer||[],window.dataLayer.push({"gtm.start":(new Date).getTime(),event:"gtm.js"})</script> <script src="https://t.volkskrant.nl/gtm.js?id=GTM-MNR2SVJ" async="async"></script>   <script type="text/javascript"> window.cmpProperties = {
+            privacyManagerId: 148844,
+            baseUrl: 'https://www.volkskrant.nl',
+            cmpCname: 'https://cmp.volkskrant.nl',
+            featureFlags: {
+                unified: true
+            }
+        } </script>   <script async type="text/javascript" src="https://myprivacy-static.dpgmedia.net/consent.js"></script>    <script> function showPrivacyModal() {
+            window._privacy.openModal();
+        }
+
+        window.APP.helpers.waitUntilTrue(
+                function() {
+                    return  window._privacy &&
+                            window.APP &&
+                            window.APP.helpers &&
+                            window.APP.helpers.setCookie &&
+                            window.APP.helpers.getCookie &&
+                            window.APP.helpers.expireCookie
+                },
+                function() {
+                    const SEL_MARKETING_CONSENT_COOKIE_NAME = 'sel_tcf20_marketing';
+                    const updateMarketingConsentCookie = function() {
+                        window._privacy.push([
+                            'marketing',
+                            function marketingConsentIsGiven() {
+                                window.APP.helpers.setCookie(SEL_MARKETING_CONSENT_COOKIE_NAME, '1', 365);
+                                document.dispatchEvent(new Event('marketingConsentGiven'));
+                            },
+                            function marketingConsentIsRevoked() {
+                                window.APP.helpers.setCookie(SEL_MARKETING_CONSENT_COOKIE_NAME, '0', 365);
+                                document.dispatchEvent(new Event('marketingConsentRevoked'));
+                            }
+                        ]);
+                    }
+
+                    window._privacy.push([
+                        'consentupdated',
+                        updateMarketingConsentCookie
+                    ]);
+
+                    if (!window.APP.helpers.getCookie(SEL_MARKETING_CONSENT_COOKIE_NAME)) {
+                        updateMarketingConsentCookie();
+                    }
+                },
+                function () { },
+                100, 300
+        ); </script>   <script> window.APP.helpers.waitUntilTrue(
+            function () {
+                return Boolean(window.temptation && window.temptation.init && window.APP.loginHelpers);
+            },
+            function () {
+                window.temptation.init(null,
+                    false,
+                    null);
+            },
+            function () {
+                window.APP.modules.temptation.executed = true;
+                console.error('Could not init paywall');
+            },
+            100,
+            100
+        ); </script>  <script src="/static/main.bundle-9b73b218fb.js" defer="defer"></script>  <script src="https://www.volkskrant.nl/sel-static/teasers/main-067b750414.js" defer="defer"></script>  <link rel="canonical" href="https://www.volkskrant.nl/nieuws"> <link rel="apple-touch-icon-precomposed" sizes="192x192" href="/static/apple-touch-icon-192x192.png"> <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/static/apple-touch-icon-180x180.png"> <link rel="apple-touch-icon-precomposed" sizes="167x167" href="/static/apple-touch-icon-167x167.png"> <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/static/apple-touch-icon-152x152.png"> <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/apple-touch-icon-144x144.png"> <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/static/apple-touch-icon-128x128.png"> <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/static/apple-touch-icon-120x120.png"> <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/apple-touch-icon-114x114.png"> <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/static/apple-touch-icon-76x76.png"> <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/apple-touch-icon-72x72.png"> <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/static/apple-touch-icon-60x60.png"> <link rel="icon" type="image/png" href="/static/favicon-196x196.png" sizes="196x196"> <link rel="icon" type="image/png" href="/static/favicon-128x128.png" sizes="128x128"> <link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96"> <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32"> <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16">    </head> <body>   <svg style="display:none"> <symbol fill="none" id="pluslabel">   <path d="M.5.8h25v17H.5z" stroke="currentColor"/> <path clip-rule="evenodd" d="M9.8 5.6v-.3H5v.3h.3c.4 0 .6 0 .7.2l.2.4 3.7 7.1h.4L14 6.2c.2-.4.3-.5.5-.6h.6v-.3h-2.8v.3h.1c.8 0 1 .1 1 .4L13 7l-2 3.8-2-4.1-.2-.8c0-.1 0-.2.3-.3h.7Zm9 .7h-1.6v2.2H15v1.6h2.2v2.2h1.6v-2.2H21V8.5h-2.2V6.3Z" fill="currentColor" fill-rule="evenodd"/>      </symbol> </svg>     <header class="header  has--title has--list">  <div class="header__brand-wrapper">    <a class="brand-link" href="/">   <svg viewBox="0 0 191 24" class="brand-svg logo-variant-1" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#a)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M57.887 12.59c4.715 0 7.79 2.239 7.79 5.658 0 3.536-3.005 5.752-7.79 5.752-4.762 0-7.79-2.216-7.79-5.705 0-3.49 3.028-5.705 7.79-5.705Zm128.985-3.843.301.235v4.126h3.537v.943h-3.537v5.446c0 .684-.047 1.462.116 1.957.138.448.484.73 1.063.73 1.529 0 1.616-1.31 1.618-2.614v-.309h.786v.354c0 1.297-.069 1.886-.347 2.428-.647 1.297-2.103 1.957-4.346 1.957-1.687 0-2.843-.354-3.56-1.179-.462-.518-.716-1.25-.786-2.098-.045-.46-.068-.83-.069-1.873v-4.799h-1.896v-.778l7.12-4.526Zm-161.085 3.89c4.485 0 7.004 2.098 7.073 5.87h-9.084v.542c0 1.06.046 1.792.185 2.24.3 1.06 1.364 1.697 2.959 1.697 1.941 0 3.837-.99 5.27-2.711l.532.59C31.219 22.915 28.838 24 25.902 24c-4.6 0-7.674-2.263-7.674-5.658 0-3.513 2.913-5.705 7.559-5.705ZM15.755 0v21.408c.007 1.135.252 1.295 1.757 1.295h.578v.873H10.46v-1.014c-1.017.896-2.38 1.39-4.276 1.39-2.959 0-5.94-2.168-5.94-5.657 0-3.513 2.935-5.659 5.94-5.659 1.526 0 3.028.472 4.022 1.203V2.029C10.2 1.01 9.954.873 8.45.873H7.433V0h8.322Zm87.092 12.707c1.341 0 2.519.212 3.906.637.463.141.578.165.763.165.324 0 .44-.142.509-.448h.763v3.49h-.763v-.26c0-.825-.116-1.132-.509-1.485-.578-.52-1.687-.896-2.681-.896-.902 0-1.387.33-1.387.896 0 .542.323.825 1.687 1.367l1.387.542c2.243.896 3.028 1.745 3.028 3.3 0 2.405-2.219 3.89-5.871 3.89-1.733 0-3.19-.282-5.04-.919-.208-.07-.3-.118-.438-.118-.3 0-.393.213-.416.708h-.787v-4.032h.787v.095c0 .848.138 1.343.485 1.744.647.755 1.941 1.344 3.167 1.344.924 0 1.41-.33 1.41-.872 0-.495-.347-.826-1.272-1.25l-.808-.377c-2.566-1.155-3.56-2.192-3.56-3.796 0-2.31 2.15-3.725 5.64-3.725Zm50.6-.07c2.242 0 3.861.565 4.739 1.697.3.377.508.801.624 1.226.139.495.161.896.161 2.263v3.537c0 1.014.186 1.343 1.226 1.343h.462v.873h-7.05v-.99c-1.202.896-2.728 1.296-4.277 1.296-2.357 0-4.322-1.132-4.322-3.465 0-2.594 2.496-3.56 6.126-3.56.832 0 1.433.023 2.288.094v-.778c0-.731-.023-1.038-.139-1.344-.231-.613-.947-.943-2.034-.943-1.11 0-2.265.33-2.843.801-.416.33-.578.779-.578 1.627v.26h-.763v-3.49h.693c.024.401.116.519.394.519.185 0 .739-.188.924-.236 1.572-.448 3.051-.73 4.369-.73ZM117.502 0v17.941l2.474-1.839c.3-.236.785-.59 1.017-.802.393-.353.531-.565.531-.825 0-.212-.138-.353-.3-.424-.18-.069-.295-.093-1.047-.094h-.849v-.872h8.091v.871c-2.635.072-4.323.52-5.525 1.415l5.063 6.484c.369.471.624.707.855.777.254.071.462.095.716.095.185.023.347 0 .347 0v.872h-7.489l-3.884-5.163v2.924c0 1.162.247 1.361 1.716 1.367h.364v.872h-9.962v-.872h.578c1.504 0 1.75-.16 1.756-1.295V2.075c0-1.046-.224-1.199-1.692-1.203h-1.082V0h8.322ZM84.909 0v17.941l2.473-1.839c.301-.236.786-.59 1.017-.802.393-.353.532-.565.532-.825 0-.212-.139-.353-.3-.424-.18-.069-.295-.093-1.047-.094h-.849v-.872h8.09v.871c-2.635.072-4.322.52-5.524 1.415l5.062 6.484c.37.471.625.707.856.777.254.071.462.095.716.095.185.023.347 0 .347 0v.872h-7.49l-3.883-5.163v2.924c0 1.162.247 1.361 1.716 1.367h.365v.872h-9.963v-.872h.578c1.525 0 1.756-.165 1.756-1.344V2.075c0-1.046-.224-1.199-1.692-1.203h-1.082V0h8.322Zm56.356 12.636c2.057 0 3.283 1.344 3.283 3.349 0 1.909-1.179 3.182-2.959 3.182-1.711 0-2.913-1.131-2.913-2.711 0-.378.046-.707.231-1.061.093-.189.07-.212.07-.26 0-.07-.093-.117-.139-.117-.185 0-.416.212-.67.613-.255.4-.486.966-.601 1.438-.116.518-.185 1.273-.185 2.263v2.146c0 1.045.247 1.22 1.714 1.225h.736v.873h-10.125v-.873h.439c1.526 0 1.757-.14 1.757-1.202v-6.318c0-1.061-.231-1.203-1.757-1.203h-.693v-.872h7.744v2.735c.785-2.004 2.219-3.207 4.068-3.207ZM73.86 0v21.478c0 1.069.247 1.221 1.715 1.225h.643v.873h-10.24v-.873h.577c1.526 0 1.757-.14 1.757-1.202V2.075c0-1.046-.224-1.199-1.692-1.203h-1.082V0h8.322Zm99.605 12.778c1.526 0 2.728.471 3.491 1.32.416.472.647 1.061.739 1.721.045.435.068.648.07 1.503v4.108c0 1.116.225 1.27 1.693 1.273h.434v.873h-8.923v-.778h.138c.463 0 .74-.071.902-.236.158-.161.206-.547.208-1.51v-4.054c0-1.273-.023-1.627-.139-1.886-.162-.4-.554-.59-1.132-.59-.601 0-1.179.26-1.526.684-.347.448-.416.779-.416 2.122v3.654c0 .472.023.92.046 1.155.069.472.324.66 1.064.66h.231v.779h-8.923v-.873h.439c1.526 0 1.757-.14 1.757-1.273v-6.176c0-1.132-.231-1.274-1.757-1.274h-.693v-.872h7.651v1.509c1.248-1.226 2.82-1.84 4.646-1.84ZM43.278 0v.872h-.44c-.924 0-1.086.024-1.41.071-.554.094-.855.424-.855.92 0 .424.185.942.717 2.168l5.316 12.166 4.947-11.388c.347-.801.925-2.098.925-2.805 0-.861-.54-1.125-2.556-1.132h-.264V0h7.212v.872h-.231c-.833 0-1.063.024-1.364.095-.485.141-.717.447-1.179 1.508l-9.385 21.1h-1.225l-9.524-21.1c-.231-.495-.439-.92-.624-1.131-.3-.354-.693-.472-1.803-.472h-.786V0h12.529Zm14.61 13.485c-.903 0-1.573.401-1.827 1.061-.162.425-.185.873-.185 2.428V19.7c0 1.433.024 1.894.168 2.298l.017.046c.254.66.924 1.061 1.826 1.061.901 0 1.572-.4 1.826-1.06.156-.41.183-.84.185-2.264V16.81c-.002-1.37-.027-1.82-.168-2.216l-.017-.047c-.254-.66-.925-1.061-1.826-1.061Zm-49.877.472c-1.855 0-1.894 1.535-1.895 3.147v2.381c0 1.613.04 3.148 1.895 3.148.601 0 1.179-.236 1.572-.59.509-.448.67-1.06.67-2.475v-2.546c0-1.415-.161-2.028-.67-2.476a2.398 2.398 0 0 0-1.572-.59ZM152.833 17.8h-.102c-1.434 0-1.965.565-1.965 2.05v.496c0 1.438.323 1.98 1.225 1.98.462 0 .878-.189 1.132-.495.185-.236.255-.495.278-.99.023-.4.023-.778.023-1.037v-1.98c-.362-.021-.392-.024-.591-.024ZM25.718 13.532c-.763 0-1.364.283-1.642.755-.254.424-.3.825-.3 2.31v.967h3.745v-1.095c-.002-1.14-.027-1.532-.185-1.97-.208-.613-.786-.967-1.618-.967Z" fill="#000"/> </g> <defs> <clipPath id="a"> <path fill="#fff" transform="translate(.244)" d="M0 0h190.512v24H0z"/> </clipPath> </defs> </svg>  </a>  </div> <div class="header-title">  <h1 class="header-title__text">Net binnen</h1>   </div> <div class="header__buttons"> <div class="header__buttons-wrapper"> <a class="header__menu-search fjs-search" data-gtm="header / search" href="/search">  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"> <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.1" transform="translate(2 2)"> <circle cx="8" cy="7.7" r="7.2"/> <path stroke-linecap="round" d="m13 13 6 6"/> </g> </svg>  </a> <a aria-controls="menu" aria-expanded="false" class="header__menu-hamburger header-menuitem--user fjs-user-menu" data-category="menu" data-gtm="header / menu" data-menu-trigger="right" data-text="service" data-type="header_menu" href="#menu">  <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" fill-rule="evenodd"> <path fill="currentColor" d="M15.86 7.88a4.56 4.56 0 1 1-9.12 0 4.56 4.56 0 0 1 9.12 0Zm-.9 0a3.65 3.65 0 1 1-7.3 0 3.65 3.65 0 0 1 7.3 0Zm-5.48 5.48a5.93 5.93 0 0 0-5.93 5.93v2.28a.46.46 0 0 0 .91 0v-2.28a5.02 5.02 0 0 1 5.02-5.02h3.65a5.02 5.02 0 0 1 5.01 5.02v2.28a.46.46 0 0 0 .91 0v-2.28a5.93 5.93 0 0 0-5.92-5.93H9.48Z"/> <g class="badge badge--warning" fill-rule="nonzero"> <path class="bg" fill="#EB8610" d="M22.25 6.06a4.56 4.56 0 1 1-9.13 0 4.56 4.56 0 0 1 9.13 0Z"/> <path fill="#FFF" d="m19.12 3.91-1.43 1.43-1.44-1.43-.71.72 1.43 1.43-1.43 1.43.71.72 1.44-1.43 1.43 1.43.72-.72-1.44-1.43 1.44-1.43z"/> </g> <g class="badge badge--success" fill-rule="nonzero"> <path class="bg" fill="#299E47" d="M17.67 1.5a4.62 4.62 0 1 0 0 9.23 4.62 4.62 0 0 0 0-9.23Z"/> <path fill="#FFF" d="m17.19 8.15-1.73-1.68.71-.71 1.02.96 2.17-2.22.72.71z"/> </g> </svg>  </a></div> </div> </header>   <main id="main-content"> <div class="list-container fjs-pagination-container"><div class="teaser-list teaser-list--timeline timeline--overview">
+    <!--header-->
+    
+
+    <!--items loop-->
+    <ul class="teaser-list__wrapper">
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="1"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Live Midden-Oosten: Oud-premier Bennett steunt gratieverzoek Netanyahu, mits hij politiek verlaat"
+                    href="https://www.volkskrant.nl/buitenland/liveblog-israel-gaza-nieuws~b27aefe2/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">10:09 uur</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Live Midden-Oosten: Oud-premier Bennett steunt gratieverzoek Netanyahu, mits hij politiek verlaat</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/9oT34iC5FnNgDUFwKZisDwV18to/diocontent/265181127/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="2"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Koperdiefstal wordt zeld­zamer, maar bij Zwolle is het toch weer raak: treinverkeer ontregeld"
+                    href="https://www.volkskrant.nl/binnenland/koperdiefstal-wordt-zeldzamer-maar-bij-zwolle-is-het-toch-weer-raak-treinverkeer-ontregeld~bcf9b5f5/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">08:44 uur</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Koperdiefstal wordt zeld­zamer, maar bij Zwolle is het toch weer raak: treinverkeer ontregeld</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/AzKAvDjCGQ5FYBmkt0CpA0Y0XjA/diocontent/63652859/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="3"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Live politiek VS: Trump gelooft dat minister geen opdracht gaf om overlevenden ‘drugsboot’ te doden"
+                    href="https://www.volkskrant.nl/buitenland/liveblog-amerikaanse-politiek-nieuws~b0dfa628/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">08:07 uur</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Live politiek VS: Trump gelooft dat minister geen opdracht gaf om overlevenden ‘drugsboot’ te doden</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/AWjtip_0YqfIl2-3WDMnpqd2aXY/diocontent/264305026/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="4"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Conservatieve Asfura gaat voorlopig aan kop bij presidentsverkiezingen in Honduras"
+                    href="https://www.volkskrant.nl/buitenland/conservatieve-asfura-gaat-voorlopig-aan-kop-bij-presidentsverkiezingen-in-honduras~b541fbc0/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">06:14 uur</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Conservatieve Asfura gaat voorlopig aan kop bij presidentsverkiezingen in Honduras</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/4eLbRmOeu7Gad2206oeMp3KUd_M/diocontent/266060452/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="5"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Hoogste omzet ooit voor wapenfabrikanten: VS do­mineren industrie, SpaceX voor het eerst in top 100"
+                    href="https://www.volkskrant.nl/nieuws-achtergrond/hoogtijdagen-voor-wapenfabrikanten-679-miljard-dollar-omzet-voor-bedrijven-in-de-top-100~b7bebc55/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">00:18 uur</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Hoogste omzet ooit voor wapenfabrikanten: VS do­mineren industrie, SpaceX voor het eerst in top 100</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/Io_PGvdG2zaiwTWeCHhwKteGDy0/diocontent/264810287/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="6"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Stanley Menzo stapt op als bondscoach van Suriname, terwijl ploeg nog steeds zicht heeft op WK-deelname"
+                    href="https://www.volkskrant.nl/sport/stanley-menzo-stapt-op-als-bondscoach-van-suriname-terwijl-ploeg-nog-steeds-zicht-heeft-op-wk-deelname~b77df583/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Stanley Menzo stapt op als bondscoach van Suriname, terwijl ploeg nog steeds zicht heeft op WK-deelname</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/KQWq_mmRv4hoW5nFq_ow-eEISzg/diocontent/265270955/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="7"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Opnieuw verpest harde kern Ajax een wedstrijd: Ajax-FC Groningen ge­staakt vanwege vuurwerk"
+                    href="https://www.volkskrant.nl/sport/opnieuw-verpest-harde-kern-ajax-een-wedstrijd-ajax-fc-groningen-gestaakt-vanwege-vuurwerk~b7d58f70/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Opnieuw verpest harde kern Ajax een wedstrijd: Ajax-FC Groningen ge­staakt vanwege vuurwerk</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/ik49o1KNziIfeckjNnH89uZdKNE/diocontent/266048786/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="8"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Zelensky vecht tegen corruptieschandaal, geldtekort en de Russen"
+                    href="https://www.volkskrant.nl/buitenland/zelensky-vecht-tegen-corruptieschandaal-geldtekort-en-de-russen~bf30ba17/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Zelensky vecht tegen corruptieschandaal, geldtekort en de Russen</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/2HtC0HmIdAFEQymtzayIGQl0cyw/diocontent/266031019/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="9"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Arne Slot krijgt door overwinning van Liverpool bij West Ham (0-2) weer wat lucht in roerige tijden"
+                    href="https://www.volkskrant.nl/sport/arne-slot-krijgt-door-overwinning-van-liverpool-bij-west-ham-0-2-weer-wat-lucht-in-roerige-tijden~baa7216d/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Arne Slot krijgt door overwinning van Liverpool bij West Ham (0-2) weer wat lucht in roerige tijden</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/YiK06z7Jm_42oGnwrZRC4KKdo8U/diocontent/266039782/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="10"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Max Verstappen wint Grand Prix van Qatar en verhoogt druk op WK-leider Lando Norris"
+                    href="https://www.volkskrant.nl/sport/max-verstappen-wint-grand-prix-van-qatar-en-verhoogt-druk-op-wk-leider-lando-norris~b282bdcc/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Max Verstappen wint Grand Prix van Qatar en verhoogt druk op WK-leider Lando Norris</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/20gOyA4xCkwoQpMIXLCh3v3MHoc/diocontent/266043821/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="11"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Controverse over hernoe­men van park in Dublin om naam oud-Israëlische president Herzog"
+                    href="https://www.volkskrant.nl/buitenland/controverse-over-hernoemen-van-park-in-dublin-om-naam-oud-israelische-president-herzog~bf102532/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Controverse over hernoe­men van park in Dublin om naam oud-Israëlische president Herzog</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/mekoEoJssSrxCqiSP0P46f3MYoM/diocontent/265037764/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="12"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Louvre verhoogt toegangs­prijs voor bezoekers van buiten EU om deel renovatie te betalen"
+                    href="https://www.volkskrant.nl/nieuws-achtergrond/louvre-verhoogt-toegangsprijs-voor-bezoekers-van-buiten-eu-om-deel-renovatie-te-betalen~b6abb9fb/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Louvre verhoogt toegangs­prijs voor bezoekers van buiten EU om deel renovatie te betalen</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/K3iQY-taPygrEEX5n5CEsJRQU_c/diocontent/264211325/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="13"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="NPO trekt ook stekker uit podcast ‘Klassiek Inside’. De makers proberen nu zelfstandig door te gaan"
+                    href="https://www.volkskrant.nl/muziek/npo-trekt-ook-stekker-uit-podcast-klassiek-inside-de-makers-proberen-nu-zelfstandig-door-te-gaan~b38c4451/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >NPO trekt ook stekker uit podcast ‘Klassiek Inside’. De makers proberen nu zelfstandig door te gaan</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/PjUsRIQj47554xPdJ2j-Huslyco/diocontent/265971763/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="14"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Dijksma neemt het op voor lokale bestuurders ‘in de frontlinie’ en haalt uit naar Den Haag"
+                    href="https://www.volkskrant.nl/politiek/dijksma-vindt-dat-lokale-bestuurders-die-in-de-frontlinie-staan-meer-steun-verdienen-van-de-haagse-politiek~b2c69947/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Dijksma neemt het op voor lokale bestuurders ‘in de frontlinie’ en haalt uit naar Den Haag</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/JCfifyx2xvz1dnLapyNjquYlmp4/diocontent/265295026/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="15"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Maaike Dirkje Hop wint Cameretten met haar ironische lofzang op de moreel verheven vrouw"
+                    href="https://www.volkskrant.nl/theater/maaike-dirkje-hop-wint-cameretten-met-haar-ironische-lofzang-op-de-moreel-verheven-vrouw~b53bc50b/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Maaike Dirkje Hop wint Cameretten met haar ironische lofzang op de moreel verheven vrouw</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/M7QRxXRAHl_DS_QCEwS2XJaIhNk/diocontent/266027889/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="16"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Zwitsers stemmen over ‘rampzalige’ erfbelasting voor superrijken"
+                    href="https://www.volkskrant.nl/buitenland/zwitsers-stemmen-over-rampzalige-erfbelasting-voor-superrijken~bab320c9/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Zwitsers stemmen over ‘rampzalige’ erfbelasting voor superrijken</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/FiNuZTyODI_lKngg3QTr4EL0CGc/diocontent/265793350/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="17"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Hongkong treedt op tegen ‘anti-Chinese onruststokers’ na roep om onafhankelijk onderzoek naar brand"
+                    href="https://www.volkskrant.nl/buitenland/hongkong-treedt-op-tegen-anti-chinese-onruststokers-na-roep-om-onafhankelijk-onderzoek-naar-brand~bba99cd6/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Hongkong treedt op tegen ‘anti-Chinese onruststokers’ na roep om onafhankelijk onderzoek naar brand</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/OqkxWki5IfHGorN8IjQH6XIQUzQ/diocontent/266025790/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="18"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Franse radicaal-rechtse partijleider Bardella opnieuw aangevallen"
+                    href="https://www.volkskrant.nl/buitenland/franse-radicaal-rechtse-partijleider-bardella-opnieuw-aangevallen~b0b3456b/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Franse radicaal-rechtse partijleider Bardella opnieuw aangevallen</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/U1ermuV-ef0RcPxcOCXcW-MUBAg/diocontent/264877898/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="19"
+                data-content-access-category="PAYWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Chinezen mogen niet meer naar hun favoriete vakantieland Japan: ‘Ik heb me kapotgehuild’"
+                    href="https://www.volkskrant.nl/buitenland/chinezen-mogen-niet-meer-naar-hun-favoriete-vakantieland-japan-ik-heb-me-kapotgehuild~bec2502a/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">30-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Chinezen mogen niet meer naar hun favoriete vakantieland Japan: ‘Ik heb me kapotgehuild’</span>
+                            <svg class="pluslabel pluslabel-vk" viewBox="0 0 26 19">
+    <use href="#pluslabel"></use>
+</svg>
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/6yZSwcmNkIlf888GHggORJ_BqaY/diocontent/265243953/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="20"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Luchthavens Venezuela functioneren nog, ook al heeft Trump luchtruim ‘gesloten’ verklaard"
+                    href="https://www.volkskrant.nl/buitenland/luchthavens-venezuela-functioneren-nog-ook-al-heeft-trump-luchtruim-volledig-gesloten-verklaard~b54de2be/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Luchthavens Venezuela functioneren nog, ook al heeft Trump luchtruim ‘gesloten’ verklaard</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/_q4NRhK4cas4a17m_aF5yPv6yYE/diocontent/265962017/_crop/1026/0/3164/3164/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="21"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Wereldtitel wordt heel lastig voor Verstappen, start achter Norris en Piastri"
+                    href="https://www.volkskrant.nl/sport/wereldtitel-wordt-heel-lastig-voor-verstappen-start-achter-norris-en-piastri~bf15cc51/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Wereldtitel wordt heel lastig voor Verstappen, start achter Norris en Piastri</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/uk5oPwFhNXYhXc-6f-CzXA5n-5w/diocontent/265998295/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="22"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Dochter oud-president Zuma verdacht van mensensmokkel voor Wagner-leger in Oekraïne"
+                    href="https://www.volkskrant.nl/buitenland/dochter-zuid-afrikaanse-oud-president-zuma-verdacht-van-mensensmokkel-voor-wagner-leger-in-oekraine~b8b0c3af/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Dochter oud-president Zuma verdacht van mensensmokkel voor Wagner-leger in Oekraïne</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/_jxKscYfLMM5c6tAuoYV90u81pQ/diocontent/265006634/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="23"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Brabants dorp verlegt weg om ‘Duizendjarige Linde’ te beschermen"
+                    href="https://www.volkskrant.nl/binnenland/brabants-dorp-verlegt-weg-om-duizendjarige-linde-te-beschermen~b1a39650/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Brabants dorp verlegt weg om ‘Duizendjarige Linde’ te beschermen</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/NZFnm0ZMoJ6dV2esFJU38lfvqeo/diocontent/266006265/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="24"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Weer duiken er sterfgevallen op na gebruik pijnstillers uit webshop"
+                    href="https://www.volkskrant.nl/binnenland/weer-duiken-er-sterfgevallen-op-na-gebruik-pijnstillers-uit-webshop~b80a2da1/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Weer duiken er sterfgevallen op na gebruik pijnstillers uit webshop</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/tB70q28INxVhfhakne2viFUchUw/diocontent/155307196/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="25"
+                data-content-access-category="PAYWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Belangrijkste Kremlin­diplomaat Dmitriev bouwt al jaren aan goede relaties met Trump"
+                    href="https://www.volkskrant.nl/buitenland/al-sinds-2016-bouwt-de-russische-onderhandelaar-kirill-dmitriev-aan-goede-relaties-met-trump~b00fe4da/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Belangrijkste Kremlin­diplomaat Dmitriev bouwt al jaren aan goede relaties met Trump</span>
+                            <svg class="pluslabel pluslabel-vk" viewBox="0 0 26 19">
+    <use href="#pluslabel"></use>
+</svg>
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/rj2hMV34YI6KWBw59JVdx3fTAsg/diocontent/265782846/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="26"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Meeste Airbus A320’s weer in de lucht na snelle software-update"
+                    href="https://www.volkskrant.nl/economie/meeste-airbus-a320-s-weer-in-de-lucht-na-snelle-software-update~b99d5857/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Meeste Airbus A320’s weer in de lucht na snelle software-update</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/C1E3abDxiq3Q9LeJuhQhZumMU6o/diocontent/265982340/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="27"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Limburgse bestuurders laten met paginagrote advertentie weten klaar te zijn met intimidatie"
+                    href="https://www.volkskrant.nl/binnenland/limburgse-bestuurders-laten-met-paginagrote-advertentie-weten-klaar-te-zijn-met-intimidatie~ba1ea487/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">29-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Limburgse bestuurders laten met paginagrote advertentie weten klaar te zijn met intimidatie</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/hh3Fj1pXTmb9iFhBqpQA2nVuxJw/diocontent/265934645/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="28"
+                data-content-access-category="FREE"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Trump belooft gratie aan de voor drugssmokkel tot 45 jaar veroordeelde oud-president van Honduras"
+                    href="https://www.volkskrant.nl/buitenland/trump-belooft-gratie-aan-de-voor-drugssmokkel-tot-45-jaar-veroordeelde-oud-president-van-honduras~b10036fc/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">28-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Trump belooft gratie aan de voor drugssmokkel tot 45 jaar veroordeelde oud-president van Honduras</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/uokfwGAcaj22xIW3xVnm57dlljM/diocontent/265980369/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="29"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="New York Times: ‘Trump belde met Venezolaanse president Maduro’"
+                    href="https://www.volkskrant.nl/buitenland/new-york-times-trump-belde-met-venezolaanse-president-maduro~bdb20a19/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">28-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >New York Times: ‘Trump belde met Venezolaanse president Maduro’</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/9zHYGsLTwyrTS5Fl2B7JO957qxs/diocontent/265780053/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="30"
+                data-content-access-category="PAYWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Nederlands-Chinese conflict over Nexperia loopt verder op: China spreekt van ‘samenzwering’"
+                    href="https://www.volkskrant.nl/buitenland/nederlands-chinese-conflict-over-nexperia-loopt-verder-op-china-spreekt-van-samenzwering~b8df42c6/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">28-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Nederlands-Chinese conflict over Nexperia loopt verder op: China spreekt van ‘samenzwering’</span>
+                            <svg class="pluslabel pluslabel-vk" viewBox="0 0 26 19">
+    <use href="#pluslabel"></use>
+</svg>
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/7uov4v1ciD7p_aSia3s3XqqSnJQ/diocontent/263962838/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    <hr class="teaser-list-item__divider" />
+                </a>
+            </li>
+        
+            <li
+                class="teaser-list-item"
+                data-element=" text, image "
+                data-gtm="teaser_click"
+                data-list="list nieuws overview"
+                data-position="31"
+                data-content-access-category="LOGINWALL"
+            >
+                <div aria-hidden="true" class="timeline-graphic">
+                    <svg
+    class="timeline-graphic__bullet"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 1h6v6H1z" fill="#000" />
+    <path d="M1 1h6v6H1z" stroke="#000" />
+</svg>
+                    <svg
+    class="timeline-graphic__bullet-last"
+    fill="none"
+    height="7"
+    viewBox="0 0 7 7"
+    width="7"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path d="M1 3L6 1" stroke="black" />
+    <path d="M1 6L6 4" stroke="black" />
+</svg>
+                    <svg
+    class="timeline-graphic__line"
+    viewBox="0 0 1 10"
+    width="1"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M1 0v136"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        stroke="#4d4d4d"
+        stroke-dasharray="2 3"
+        stroke-linecap="square"
+        vector-effect="non-scaling-stroke"
+    />
+</svg>
+                </div>
+
+                <a
+                    class="teaser__link"
+                    aria-label="Grote woorden tijdens rechtszaak FNV, maar rechter grijpt voorlopig nog niet in"
+                    href="https://www.volkskrant.nl/economie/grote-woorden-tijdens-rechtszaak-fnv-maar-rechter-grijpt-voorlopig-nog-niet-in~b4cada61/"
+                >
+                    <header class="teaser-list-item__header">
+                        <h4 class="teaser-list-item__labels teaser__subtitle">
+                            
+                            <span class="teaser__sublabel">28-11-2025</span>
+                            
+                        </h4>
+                    </header>
+                    <div class="teaser-list-item__body">
+                        <span class="teaser__title-wrapper"
+                            >
+                            <span
+                                class="teaser-list-item__title"
+                                data-teaser-title
+                            >Grote woorden tijdens rechtszaak FNV, maar rechter grijpt voorlopig nog niet in</span>
+                            
+                        </span>
+                        <!--image-->
+                        
+    <img
+        alt=""
+        class="wl-teaser__image teaser__image--small fjs-teaser-image  "
+        data-placeholder-image-source="https://sel-static.persgroep.net/shared/images/vk-placeholder.png"
+        src="https://images0.persgroep.net/rcs/4CNpzLuIafIXN4BDRNwBfSiJ4ao/diocontent/265958485/_focus/0.5/0.5/_fill/280/280?appId=93a17a8fd81db0de025c8abd1cca1279&amp;quality=0.85"
+        style=" "
+        height="74"
+        width="74"
+        loading="eager"
+        onerror="if (!this.getAttribute('data-has-retried')) { this.src=this.getAttribute('data-placeholder-image-source'); this.setAttribute('data-has-retried', true);}"
+    />
+    
+
+                    </div>
+                    
+                </a>
+            </li>
+        
+    </ul>
+</div>
+</div>  </main>   <div class="app-bottom">   <nav class="app-bottom-navigation fjs-app-bottom-navigation"> <ul class="app-bottom-navigation__item-list"> <li class="app-bottom-navigation__item" data-gtm="navigation / live" data-category="menu" data-type="bottom_menu" data-text="live"> <a class="app-bottom-navigation__link" href="/"> <svg class="app-bottom-navigation__item-icon" width="22" height="22" xmlns="http://www.w3.org/2000/svg"> <g fill="none" fill-rule="evenodd"> <path fill="none" d="M0 0h22v22H0z"/> <path d="M10.752 19.865L3.447 3.996a4.208 4.208 0 00-.479-.851c-.23-.266-.531-.355-1.382-.355H.983v-.655h9.61v.655h-.337a6.061 6.061 0 00-1.082.053.682.682 0 00-.656.692c.08.573.267 1.126.55 1.631l4.077 9.148L16.94 5.75a7.218 7.218 0 00.71-2.11c0-.655-.426-.85-2.021-.85h-.143v-.656h5.532v.655h-.177c-.35-.02-.702.004-1.047.071-.371.106-.549.337-.904 1.135l-7.198 15.87h-.94z" fill="currentColor" fill-rule="nonzero"/> </g> </svg>  <span class="app-bottom-navigation__link-text">Home</span> </a> </li> <li class="app-bottom-navigation__item" data-gtm="navigation / edition" data-category="menu" data-type="bottom_menu" data-text="editie"> <a class="app-bottom-navigation__link" href="/krant/digitaal/vandaag"> <svg class="app-bottom-navigation__item-icon" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="nonzero" d="M23.5 9h2a.5.5 0 01.5.5v7a2.503 2.503 0 01-2.5 2.5h-21A2.503 2.503 0 010 16.5V.5A.5.5 0 01.5 0h21a.5.5 0 01.5.5v16a1.5 1.5 0 003 0V10h-1.5a.5.5 0 010-1zM1 16.5c0 .828.672 1.5 1.5 1.5h19.001A2.486 2.486 0 0121 16.5V1H1v15.5z" fill="currentColor"/> <path fill-rule="nonzero" d="M10.5 13h-7a.5.5 0 01-.5-.5v-3a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v3a.5.5 0 01-.5.5zm-.5-3H4v2h6v-2z" fill="currentColor"/> <path d="M3.596 4h14.808a.5.5 0 000-1H3.596a.5.5 0 000 1zM3.596 7h14.808a.5.5 0 000-1H3.596a.5.5 0 000 1zM18.505 9H13.5a.5.5 0 000 1h5.005a.5.5 0 000-1zM18.404 13a.5.5 0 000-1H13.5a.5.5 0 000 1h4.904zM18.5 15h-15a.5.5 0 000 1h15a.5.5 0 000-1z" fill="currentColor"/> </svg> <span class="app-bottom-navigation__link-text">Krant</span> </a> </li>  <li class="app-bottom-navigation__item" data-gtm="navigation / nieuws" data-category="menu" data-type="bottom_menu" data-text="net binnen"> <a class="app-bottom-navigation__link" href="/nieuws"> <svg class="app-bottom-navigation__item-icon" width="22" height="22" xmlns="http://www.w3.org/2000/svg"> <g fill="none" fill-rule="evenodd"> <path fill="none" d="M0 0h22v22H0z"/> <path d="M11 0C4.925 0 0 4.925 0 11s4.925 11 11 11 11-4.925 11-11C21.993 4.928 17.072.007 11 0zm0 21C5.477 21 1 16.523 1 11S5.477 1 11 1s10 4.477 10 10c-.006 5.52-4.48 9.994-10 10z" fill-rule="nonzero" fill="currentColor"/> <path d="M13.084 12.377A2.495 2.495 0 0011.5 8.55V3.568a.5.5 0 10-1 0v4.983a2.5 2.5 0 101.877 4.533l1.77 1.77a.5.5 0 00.707-.707l-1.77-1.77zM9.5 11a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" fill-rule="nonzero" fill="currentColor"/> </g> </svg> <span class="app-bottom-navigation__link-text">Net binnen</span> </a> </li> <li class="app-bottom-navigation__item" data-gtm="navigation / sections" data-category="menu" data-type="bottom_menu" data-text="rubrieken"> <button class="app-bottom-navigation__link fjs-app-menu-left-trigger" data-menu-trigger="left"> <svg class="app-bottom-navigation__item-icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg"> <path d="M16.5 12h-10a.5.5 0 0 1 0-1h10a.5.5 0 0 1 0 1ZM3.5 12h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 0 1ZM22.528 16H6.472a.46.46 0 0 1-.334-.146A.515.515 0 0 1 6 15.5c0-.133.05-.26.138-.354A.46.46 0 0 1 6.472 15h16.056a.46.46 0 0 1 .334.146.516.516 0 0 1 .138.354c0 .133-.05.26-.138.354a.46.46 0 0 1-.334.146ZM3.5 16h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 0 1ZM20.5 8h-14a.5.5 0 1 1 0-1h14a.5.5 0 0 1 0 1ZM3.5 8h-2a.5.5 0 1 1 0-1h2a.5.5 0 1 1 0 1ZM18.5 4h-12a.5.5 0 1 1 0-1h12a.5.5 0 0 1 0 1ZM3.5 4h-2a.5.5 0 1 1 0-1h2a.5.5 0 1 1 0 1ZM18.5 20h-12a.5.5 0 0 1 0-1h12a.5.5 0 0 1 0 1ZM3.5 20h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 0 1Z" fill="currentColor"/> </svg> <span class="app-bottom-navigation__link-text">Rubrieken</span> </button> </li> </ul> </nav>  </div>  <div aria-hidden="true" class="app-overlay js-is-hidden fjs-app-overlay"></div>  <aside id="menu" class="app-menu app-menu--right fjs-app-menu" data-menu="right" aria-modal="false" role="dialog"> <header class="menu-header"> <button class="menu-close fjs-close-menu" aria-label="sluiten"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="close-icon"> <path fill="none" stroke="#000" stroke-linecap="round" d="m21.5 2.5-19 19m19 0-19-19"/> </svg> </button>  <h2 class="menu-title">Instellingen</h2> </header>   <ul class="menu-list">     <div data-temptation-position="MENU_ITEM" class="menu-list__item menu-list__item--border" data-test="position-menu-item"></div>     <li class="menu-list__item js-is-hidden fjs-show-logged-in"> <a class="menu-list__item-link" href="https://mijnomgeving.volkskrant.nl/account" data-gtm="menu / Mijn account / text" data-category="menu" data-type="service" data-text="mijn account" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-list__item-svg-wrapper">  <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" fill-rule="evenodd"> <path fill="currentColor" d="M15.86 7.88a4.56 4.56 0 1 1-9.12 0 4.56 4.56 0 0 1 9.12 0Zm-.9 0a3.65 3.65 0 1 1-7.3 0 3.65 3.65 0 0 1 7.3 0Zm-5.48 5.48a5.93 5.93 0 0 0-5.93 5.93v2.28a.46.46 0 0 0 .91 0v-2.28a5.02 5.02 0 0 1 5.02-5.02h3.65a5.02 5.02 0 0 1 5.01 5.02v2.28a.46.46 0 0 0 .91 0v-2.28a5.93 5.93 0 0 0-5.92-5.93H9.48Z"/> <g class="badge badge--warning" fill-rule="nonzero"> <path class="bg" fill="#EB8610" d="M22.25 6.06a4.56 4.56 0 1 1-9.13 0 4.56 4.56 0 0 1 9.13 0Z"/> <path fill="#FFF" d="m19.12 3.91-1.43 1.43-1.44-1.43-.71.72 1.43 1.43-1.43 1.43.71.72 1.44-1.43 1.43 1.43.72-.72-1.44-1.43 1.44-1.43z"/> </g> <g class="badge badge--success" fill-rule="nonzero"> <path class="bg" fill="#299E47" d="M17.67 1.5a4.62 4.62 0 1 0 0 9.23 4.62 4.62 0 0 0 0-9.23Z"/> <path fill="#FFF" d="m17.19 8.15-1.73-1.68.71-.71 1.02.96 2.17-2.22.72.71z"/> </g> </svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Mijn account</h4>  <p class="menu-item__subtext"></p> </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>     <li class="menu-list__item fjs-hide-logged-in"> <a class="menu-list__item-link" href="/login?dpg_source=vk&amp;dpg_campaign=stdc_vk&amp;dpg_medium=menu&amp;redirect_url=https://www.volkskrant.nl" data-gtm="menu / Inloggen / text" data-category="menu" data-type="service" data-text="inloggen" aria-expanded="false">  <div class="menu-list__item-svg-wrapper">  <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" fill-rule="evenodd"> <path fill="currentColor" d="M15.86 7.88a4.56 4.56 0 1 1-9.12 0 4.56 4.56 0 0 1 9.12 0Zm-.9 0a3.65 3.65 0 1 1-7.3 0 3.65 3.65 0 0 1 7.3 0Zm-5.48 5.48a5.93 5.93 0 0 0-5.93 5.93v2.28a.46.46 0 0 0 .91 0v-2.28a5.02 5.02 0 0 1 5.02-5.02h3.65a5.02 5.02 0 0 1 5.01 5.02v2.28a.46.46 0 0 0 .91 0v-2.28a5.93 5.93 0 0 0-5.92-5.93H9.48Z"/> <g class="badge badge--warning" fill-rule="nonzero"> <path class="bg" fill="#EB8610" d="M22.25 6.06a4.56 4.56 0 1 1-9.13 0 4.56 4.56 0 0 1 9.13 0Z"/> <path fill="#FFF" d="m19.12 3.91-1.43 1.43-1.44-1.43-.71.72 1.43 1.43-1.43 1.43.71.72 1.44-1.43 1.43 1.43.72-.72-1.44-1.43 1.44-1.43z"/> </g> <g class="badge badge--success" fill-rule="nonzero"> <path class="bg" fill="#299E47" d="M17.67 1.5a4.62 4.62 0 1 0 0 9.23 4.62 4.62 0 0 0 0-9.23Z"/> <path fill="#FFF" d="m17.19 8.15-1.73-1.68.71-.71 1.02.96 2.17-2.22.72.71z"/> </g> </svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Inloggen</h4>  <p class="menu-item__subtext">U bent niet ingelogd</p> </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item js-is-hidden fjs-show-logged-in"> <a class="menu-list__item-link" href="https://mijnomgeving.volkskrant.nl/abonnementen" data-gtm="menu / Mijn abonnement(en) / text" data-category="menu" data-type="service" data-text="mijn abonnement(en)" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Mijn abonnement(en)</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>    </ul>   <h3 class="menu-list-title">Service</h3> <ul class="menu-list">   <li class="menu-list__item"> <a class="menu-list__item-link" href="https://mijnomgeving.volkskrant.nl" data-gtm="menu / Klantenservice / text" data-category="menu" data-type="service" data-text="klantenservice" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Klantenservice</h4>  <p class="menu-item__subtext">Antwoord op al uw vragen</p> </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="https://mijnomgeving.volkskrant.nl" data-gtm="menu / Bezorging / text" data-category="menu" data-type="service" data-text="bezorging" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Bezorging</h4>  <p class="menu-item__subtext">Updates, wijzigingen en klachten</p> </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>    </ul>   <h3 class="menu-list-title">Personaliseren</h3> <ul class="menu-list">   <li class="menu-list__item"> <a class="menu-list__item-link" href="/meldingen" data-gtm="menu / Meldingen / text" data-category="menu" data-type="service" data-text="meldingen" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Meldingen</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item fjs-hide-logged-in"> <a class="menu-list__item-link" href="/nieuwsbrief" data-gtm="menu / Nieuwsbrieven / text" data-category="menu" data-type="service" data-text="nieuwsbrieven" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Nieuwsbrieven</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item js-is-hidden fjs-show-logged-in"> <a class="menu-list__item-link" href="/nieuwsbrief" data-gtm="menu / Mijn nieuwsbrieven / text" data-category="menu" data-type="service" data-text="mijn nieuwsbrieven" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Mijn nieuwsbrieven</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link fjs-has-submenu" href="#" data-gtm="menu / Data en Privacy / text" data-category="menu" data-type="service" data-text="data en privacy" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Data en Privacy</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> <div class="menu-sub-menu"> <header class="menu-header">  <div class="menu-back fjs-submenu-back"> <svg class="menu-back-icon"> <path d="M8.99989 21.4939C8.86725 21.494 8.74002 21.4413 8.64639 21.3474L0.146393 12.8474C-0.0487977 12.6521 -0.0487977 12.3356 0.146393 12.1404L8.64639 3.64036C8.84258 3.45087 9.15444 3.45358 9.3473 3.64645C9.54017 3.83931 9.54288 4.15117 9.35339 4.34736L1.20689 12.4939L9.35339 20.6404C9.49635 20.7834 9.5391 20.9984 9.46173 21.1852C9.38436 21.372 9.20209 21.4938 8.99989 21.4939Z" fill="black"/> </svg> </div> <h2 class="menu-title">Data en Privacy</h2> </header> <ul class="menu-sub-list">  <li class="menu-list__item"> <a class="menu-list__item-link" href="javascript:showPrivacyModal();" data-gtm="menu / Privacy-instellingen / text" data-category="menu" data-type="service" data-text="privacy-instellingen" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Privacy-instellingen</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item"> <a class="menu-list__item-link" href="https://privacy.dpgmedia.nl/nl/document/cookie-policy" data-gtm="menu / Cookiebeleid / text" data-category="menu" data-type="service" data-text="cookiebeleid" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Cookiebeleid</h4>   </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>  <li class="menu-list__item"> <a class="menu-list__item-link" href="https://www.dpgmedia.nl/privacy" data-gtm="menu / Privacy / text" data-category="menu" data-type="service" data-text="privacy" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Privacy</h4>   </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>  </ul> </div></li>    </ul>   <h3 class="menu-list-title">Meer Volkskrant</h3> <ul class="menu-list">   <li class="menu-list__item"> <a class="menu-list__item-link" href="https://webwinkel.volkskrant.nl/" data-gtm="menu / Winkel / text" data-category="menu" data-type="service" data-text="winkel" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Winkel</h4>   </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="/puzzels" data-gtm="menu / Puzzels &amp; Games / text" data-category="menu" data-type="service" data-text="puzzels &amp; games" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Puzzels &amp; Games</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>    </ul>   <h3 class="menu-list-title">Vragen &amp; Contact</h3> <ul class="menu-list">   <li class="menu-list__item"> <a class="menu-list__item-link" href="https://www.volkskrant.nl/tipderedactie/" data-gtm="menu / Tip de redactie / text" data-category="menu" data-type="service" data-text="tip de redactie" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Tip de redactie</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="/#feedback" data-gtm="menu / Wat vindt u van deze website? / text" data-category="menu" data-type="service" data-text="wat vindt u van deze website?" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Wat vindt u van deze website?</h4>   </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="https://www.dpgmedia.nl/gebruiksvoorwaarden" data-gtm="menu / Gebruiksvoorwaarden / text" data-category="menu" data-type="service" data-text="gebruiksvoorwaarden" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Gebruiksvoorwaarden</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="https://www.dpgmediagroup.com/nl-nl/adverteren/adverteren-volkskrant?utm_source=volkskrant&amp;utm_medium=nieuwssite&amp;utm_campaign=adverteren&amp;utm_term=instellingen&amp;utm_content=tekstlink_volkskrant" data-gtm="menu / Adverteren / text" data-category="menu" data-type="service" data-text="adverteren" aria-expanded="false" target="_blank" rel="noopener noreferrer">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Adverteren</h4>   </div>  <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M18.0147 5.5H9.01467C8.73852 5.5 8.51467 5.72386 8.51467 6C8.51467 6.27614 8.73852 6.5 9.01467 6.5H16.8077L5.66167 17.646C5.52651 17.7702 5.47029 17.9585 5.51522 18.1365C5.56016 18.3145 5.69902 18.4536 5.87694 18.4987C6.05487 18.5439 6.24325 18.488 6.36767 18.353L17.5147 7.207V15C17.5147 15.2761 17.7385 15.5 18.0147 15.5C18.2908 15.5 18.5147 15.2761 18.5147 15V6C18.5147 5.72386 18.2908 5.5 18.0147 5.5Z" fill="black"/> </svg> </div>  </a> </li>    </ul>   <h3 class="menu-list-title js-is-hidden fjs-show-logged-in">Uitloggen</h3> <ul class="menu-list">   <li class="menu-list__item js-is-hidden fjs-show-logged-in"> <a class="menu-list__item-link" href="/logout?dpg_source=vk&amp;dpg_campaign=stdc_vk&amp;dpg_medium=menu&amp;redirect_url=https://www.volkskrant.nl" data-gtm="menu / Log uit / text" data-category="menu" data-type="service" data-text="log uit" onclick="return window.APP.loginHelpers.logout()" aria-expanded="false">  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Log uit</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>    </ul>   </aside>  <aside id="menu" class="app-menu app-menu--left fjs-app-menu-left" data-menu="left" aria-modal="false" role="dialog"> <header class="menu-header"> <button class="menu-close fjs-close-menu" aria-label="sluiten"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="close-icon"> <path fill="none" stroke="#000" stroke-linecap="round" d="m21.5 2.5-19 19m19 0-19-19"/> </svg> </button>  <h2 class="menu-title">Rubrieken</h2> </header>  <h3 class="menu-list-title">Ontdek</h3> <ul class="menu-list">   <li class="menu-list__item"> <a class="menu-list__item-link" href="/bewaard" data-gtm="menu / Bewaarde artikelen / text" data-category="menu" data-type="service" data-text="bewaarde artikelen" aria-expanded="false">  <div class="menu-list__item-svg-wrapper">  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" data-button-state="unknown" data-status="loading"> <path class="main-shape" stroke="currentColor" fill="none" d="M19.24 21.47a.55.55 0 0 0 .26-.47V5A2.5 2.5 0 0 0 17 2.5H7A2.5 2.5 0 0 0 4.5 5v15.95a.5.5 0 0 0 .8.34l6.7-4.8.3.2 6.45 4.78a.5.5 0 0 0 .49 0Z"/> </svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Bewaarde artikelen</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="/krant/digitaal/vandaag" data-gtm="menu / Krant / text" data-category="menu" data-type="service" data-text="krant" aria-expanded="false">  <div class="menu-list__item-svg-wrapper">  <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <mask id="mask0_6240_39863" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="26" height="24"> <rect width="26" height="24" fill="white"/> </mask> <g mask="url(#mask0_6240_39863)"> <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M25.5 11.5H23.5C23.2239 11.5 23 11.7239 23 12C23 12.2761 23.2239 12.5 23.5 12.5H25V19C25 19.8284 24.3284 20.5 23.5 20.5C22.6716 20.5 22 19.8284 22 19V3C22 2.72386 21.7761 2.5 21.5 2.5H0.5C0.223858 2.5 0 2.72386 0 3V19C0.00165306 20.38 1.11997 21.4983 2.5 21.5H23.5C24.88 21.4983 25.9983 20.38 26 19V12C26 11.7239 25.7761 11.5 25.5 11.5ZM2.5 20.5C1.672 20.5 1 19.828 1 19V3.5H21V19C21 19.541 21.175 20.068 21.501 20.5H2.5ZM3.596 6.5H18.404C18.6801 6.5 18.904 6.27614 18.904 6C18.904 5.72386 18.6801 5.5 18.404 5.5H3.596C3.31986 5.5 3.096 5.72386 3.096 6C3.096 6.27614 3.31986 6.5 3.596 6.5ZM10.5 15.5H3.5C3.22386 15.5 3 15.2761 3 15V12C3 11.7239 3.22386 11.5 3.5 11.5H10.5C10.7761 11.5 11 11.7239 11 12V15C11 15.2761 10.7761 15.5 10.5 15.5ZM10 12.5H4V14.5H10V12.5ZM18.404 9.5H3.596C3.31986 9.5 3.096 9.27614 3.096 9C3.096 8.72386 3.31986 8.5 3.596 8.5H18.404C18.6801 8.5 18.904 8.72386 18.904 9C18.904 9.27614 18.6801 9.5 18.404 9.5ZM18.505 11.5H13.5C13.2239 11.5 13 11.7239 13 12C13 12.2761 13.2239 12.5 13.5 12.5H18.505C18.7811 12.5 19.005 12.2761 19.005 12C19.005 11.7239 18.7811 11.5 18.505 11.5ZM18.904 15C18.904 15.2761 18.6801 15.5 18.404 15.5H13.5C13.2239 15.5 13 15.2761 13 15C13 14.7239 13.2239 14.5 13.5 14.5H18.404C18.6801 14.5 18.904 14.7239 18.904 15ZM3.5 17.5C3.22386 17.5 3 17.7239 3 18C3 18.2761 3.22386 18.5 3.5 18.5H18.5C18.7761 18.5 19 18.2761 19 18C19 17.7239 18.7761 17.5 18.5 17.5H3.5Z"/> </g> </svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Krant</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="/nieuwsbrief" data-gtm="menu / Nieuwsbrieven / text" data-category="menu" data-type="service" data-text="nieuwsbrieven" aria-expanded="false">  <div class="menu-list__item-svg-wrapper">  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M21 8h-1V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1ZM5 3h14v7.78L12 17l-7-6.22V3ZM4 9v.89L3 9h1ZM3 20v-9.66l4.96 4.41L3 20.26V20Zm17 1H3.67l5.03-5.59 2.63 2.34a1 1 0 0 0 1.33 0l2.63-2.34L20.32 21h-.33.01Zm1-1v.25l-4.96-5.51L21 10.33V20ZM20 9.89V9h1l-1 .89Z"/> <path fill="currentColor" d="M17 5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5c0 .28.22.5.5.5h9a.5.5 0 0 0 .5-.5ZM15 11.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0-.5.5c0 .28.22.5.5.5h5a.5.5 0 0 0 .5-.5ZM17 7.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5c0 .28.22.5.5.5h9a.5.5 0 0 0 .5-.5ZM17 9.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5c0 .28.22.5.5.5h9a.5.5 0 0 0 .5-.5Z"/> </svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Nieuwsbrieven</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="/puzzels" data-gtm="menu / Puzzels / text" data-category="menu" data-type="service" data-text="puzzels" aria-expanded="false">  <div class="menu-list__item-svg-wrapper">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M19 2H5C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2ZM14.5 3H9.5V8.5H14.5V3ZM14.5 9.5H9.5V14.5H14.5V9.5ZM8.5 9.5V14.5H3V9.5H8.5ZM3 19V15.5H8.5V21H5C3.89543 21 3 20.1046 3 19ZM14.5 15.5H9.5V21H14.5V15.5ZM15.5 21V15.5H21V19C21 20.1046 20.1046 21 19 21H15.5ZM21 9.5V14.5H15.5V9.5H21ZM8.5 8.5V3H5C3.89543 3 3 3.89543 3 5V8.5H8.5Z"/> </svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Puzzels</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="/overlijdensberichten" data-gtm="menu / Overlijdensberichten / text" data-category="menu" data-type="service" data-text="overlijdensberichten" aria-expanded="false">  <div class="menu-list__item-svg-wrapper">  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none"> <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M4 23h17M7.99 22.5V12a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10.5M14.04 8.4c1.92-1.76.57-4.39-.6-6.03A15.8 15.8 0 0 0 12.24 1c.48 1.31-.1 2.18-.6 3.01-.33.55-1.28 1.46-1.53 2.2a2 2 0 0 0 .63 2.19c1.2 1.1 2.7.45 3.3 0ZM12.48 9v2"/> <path stroke="#000" stroke-linecap="round" d="M14.5 11v5"/> </svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Overlijdensberichten</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>     <li class="menu-list__item"> <a class="menu-list__item-link" href="/overons" data-gtm="menu / Over ons / text" data-category="menu" data-type="service" data-text="over ons" aria-expanded="false">  <div class="menu-list__item-svg-wrapper">  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="currentColor" fill-rule="evenodd" d="M11.57 2.41v.71h-.36c-.75 0-.88.02-1.15.06-.45.08-.7.34-.7.75 0 .34.16.76.59 1.76l4.32 9.9 4.03-9.27c.28-.65.75-1.7.75-2.28 0-.7-.44-.91-2.08-.92h-.21v-.7h5.86v.7h-.18c-.68 0-.87.02-1.11.08-.4.11-.59.36-.96 1.22L12.73 21.6h-1L4 4.42a4.6 4.6 0 0 0-.5-.92c-.25-.28-.57-.38-1.47-.38h-.64v-.7h10.19Z"/></svg>  </div>  <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Over ons</h4>   </div>   <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>    </ul>   <h3 class="menu-list-title">Rubrieken</h3> <ul class="menu-list">   <li class="menu-list__item"> <a class="menu-list__item-link" href="/tech" data-category="menu" data-type="rubrieken" data-text="ai &amp; tech"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">AI &amp; Tech</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item menu-list__item--section-subitems"> <a class="menu-list__item-link" href="/beter-leven" data-category="menu" data-type="rubrieken" data-text="beter leven"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Beter Leven</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  <ul class="menu-list menu-list--section-subitems">  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/auto-en-fiets" data-gtm="menu / Auto en fiets / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/auto-en-fiets">Auto en fiets</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/koken-en-eten" data-gtm="menu / Koken en Eten / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/koken-en-eten">Koken en Eten</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/opvoeden" data-gtm="menu / Opvoeden / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/opvoeden">Opvoeden</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  </ul>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/binnenland" data-category="menu" data-type="rubrieken" data-text="binnenland"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Binnenland</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/buitenland" data-category="menu" data-type="rubrieken" data-text="buitenland"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Buitenland</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/cartoons" data-category="menu" data-type="rubrieken" data-text="cartoons"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Cartoons</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/columns-van-de-dag" data-category="menu" data-type="rubrieken" data-text="columns"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Columns</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item menu-list__item--section-subitems"> <a class="menu-list__item-link" href="/cultuur-media" data-category="menu" data-type="rubrieken" data-text="cultuur &amp; media"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Cultuur &amp; Media</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  <ul class="menu-list menu-list--section-subitems">  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/tentoonstellingen" data-gtm="menu / Beeldende Kunst / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/tentoonstellingen">Beeldende Kunst</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/boeken" data-gtm="menu / Boeken / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/boeken">Boeken</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/films" data-gtm="menu / Films / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/films">Films</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/games" data-gtm="menu / Games / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/games">Games</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/muziek" data-gtm="menu / Muziek / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/muziek">Muziek</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/nieuwe-series" data-gtm="menu / Series / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/nieuwe-series">Series</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  <li class="menu-list__item menu-list__item--section-subitem"> <a class="menu-list__item-link" href="/theater" data-gtm="menu / Theater / text"> <div class="menu-item__text-wrapper"> <h3 class="menu-item__title" href="/theater">Theater</h3> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a> </li>  </ul>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/economie" data-category="menu" data-type="rubrieken" data-text="economie"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Economie</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/foto" data-category="menu" data-type="rubrieken" data-text="foto"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Foto</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/mensen" data-category="menu" data-type="rubrieken" data-text="mensen"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Mensen</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/columns-opinie" data-category="menu" data-type="rubrieken" data-text="opinie"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Opinie</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/podcasts" data-category="menu" data-type="rubrieken" data-text="podcasts"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Podcasts</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/politiek" data-category="menu" data-type="rubrieken" data-text="politiek"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Politiek</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/sport" data-category="menu" data-type="rubrieken" data-text="sport"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Sport</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/magazine" data-category="menu" data-type="rubrieken" data-text="volkskrant magazine"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Volkskrant Magazine</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/digitale-specials" data-category="menu" data-type="rubrieken" data-text="voor abonnees: onze specials"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Voor abonnees: onze specials</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>   <li class="menu-list__item"> <a class="menu-list__item-link" href="/wetenschap" data-category="menu" data-type="rubrieken" data-text="wetenschap"> <div class="menu-item__text-wrapper"> <h4 class="menu-item__title">Wetenschap</h4> </div> <div class="menu-item__icon-wrapper"> <svg class="menu-item__icon"> <path d="M9.49991 18.9939C9.29771 18.9938 9.11544 18.872 9.03807 18.6852C8.9607 18.4984 9.00345 18.2834 9.14641 18.1404L14.7929 12.4939L9.14641 6.84736C8.95692 6.65117 8.95963 6.33931 9.1525 6.14645C9.34537 5.95358 9.65722 5.95087 9.85341 6.14036L15.8534 12.1404C16.0486 12.3356 16.0486 12.6521 15.8534 12.8474L9.85341 18.8474C9.75978 18.9413 9.63255 18.994 9.49991 18.9939V18.9939Z" fill="black"/> </svg> </div> </a>  </li>  </ul> </aside>  <div class="app-editor-tip"> <h3 class="editor-tip-title">Wilt u belangrijke informatie delen met de Volkskrant?</h3> <p class="editor-tip-text"><a href="https://www.volkskrant.nl/tip/">Tip hier onze journalisten</a></p> </div>  <div class="app-footer"> <div class="app-footer__column"> <h4 class="app-footer__title">Algemeen</h4> <ul class="app-footer__list"> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.volkskrant.nl/contact-redactie" data-gtm="footer / Contact met de redactie">Contact met de redactie</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://mijnomgeving.volkskrant.nl/" data-gtm="footer / Contact met de klantenservice">Contact met de klantenservice</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.dpgmedia.nl/privacy" data-gtm="footer / Privacystatement">Privacystatement</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://mijnomgeving.volkskrant.nl/" data-gtm="footer / Abonnementsvoorwaarden">Abonnementsvoorwaarden</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.dpgmedia.nl/gebruiksvoorwaarden" data-gtm="footer / Gebruiksvoorwaarden"> Gebruiksvoorwaarden</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" target="_blank" href="/toegankelijkheidsverklaring" data-gtm="footer / Toegankelijkheidsverklaring">Toegankelijkheidsverklaring</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://privacy.dpgmedia.nl/nl/document/cookie-policy" data-gtm="footer / Cookiebeleid">Cookiebeleid</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="#" onclick="showPrivacyModal()" data-gtm="footer / Cookieinstellingen">Privacy-instellingen</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.volkskrant.nl/nieuws-achtergrond/copyright-auteursrechten-volkskrant~b602876a9/" data-gtm="footer / Auteursrecht"> Auteursrecht </a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.volkskrant.nl/nieuws-achtergrond/het-colofon-van-de-volkskrant~bce3473d/" data-gtm="footer / Colofon"> Colofon</a> </li> </ul> </div> <div class="app-footer__column"> <h4 class="app-footer__title">Service</h4> <ul class="app-footer__list"> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://mijnomgeving.volkskrant.nl" data-gtm="footer / klantenservice">Klantenservice</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://mijnomgeving.volkskrant.nl/bezorgservice" data-gtm="footer / Bezorgklacht indienen">Bezorgklacht indienen</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://mijnomgeving.volkskrant.nl/vakantieservice" data-gtm="footer / Bezorging pauzeren">Bezorging pauzeren</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://mijnomgeving.volkskrant.nl/vakantieservice" data-gtm="footer / Bezorging wijzigen">Bezorging wijzigen</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://mijnomgeving.volkskrant.nl/verhuisservice" data-gtm="footer / (Bezorg)adres wijzigen">(Bezorg)adres wijzigen</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.dpgmediagroup.com/nl-nl/adverteren/adverteren-volkskrant?utm_source=volkskrant&utm_medium=nieuwssite&utm_campaign=adverteren&utm_term=footer&utm_content=tekstlink_volkskrant" data-gtm="footer / Adverteren">Adverteren</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.dpglosseverkoop.nl/tornl_j2ee/pag/pve_index.jsp" data-gtm="footer / Losse
+                verkoop">Losse verkoop</a> </li> </ul> </div> <div class="app-footer__column"> <h4 class="app-footer__title">Meer de Volkskrant</h4> <ul class="app-footer__list"> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.volkskrant.nl/overons" data-gtm="footer / Over ons">Over ons</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.volkskrant.nl/abonneren" data-gtm="footer / Abonneren">Abonneren</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="/nieuwsbrief" data-gtm="footer / Nieuwsbrieven">Nieuwsbrieven</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.volkskrant.nl/krant/digitaal/vandaag" data-gtm="footer / Krant">Krant</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://webwinkel.volkskrant.nl/" data-gtm="footer / Webwinkel">Webwinkel</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.volkskrant.nl/puzzels/uitgelicht" data-gtm="footer / Puzzels">Puzzels</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="/rss/feeds" data-gtm="footer / RSS-feeds">RSS-feeds</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.facebook.com/volkskrant/" data-gtm="footer / Facebook">Facebook</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://www.twitter.com/volkskrant" data-gtm="footer / Twitter">Twitter</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://play.google.com/store/apps/details?id=be.persgroep.android.news.mobilevk&hl=nl" data-gtm="footer / Android apps">Android apps</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="https://itunes.apple.com/nl/app/de-volkskrant/id418873064?mt=8" data-gtm="footer / iOS apps">iOS apps</a> </li> </ul> </div> <div class="app-footer__column"> <h4 class="app-footer__title">Navigeer</h4> <ul class="app-footer__list"> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="/columns" data-gtm="footer / Columnisten">Columnisten</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="/recensies" data-gtm="footer / Recensies">Recensies</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="/volkskeuken" data-gtm="footer / De Volkskeuken">De Volkskeuken</a> </li> <li class="app-footer__list-item"> <a class="app-footer__list-link" href="/archief" data-gtm="footer / Archief">Archief</a> </li> </ul> </div> </div>  <div class="app-disclaimer__wrapper"> <div class="app-disclaimer"> <img class="app-disclaimer__image lazy" data-src="/static/sigmund-footer.png" alt="" loading="lazy" width="110" height="88"> <hr class="app-disclaimer__line"> <p class="app-disclaimer__text"> Op alle verhalen van de Volkskrant rust uiteraard copyright.<br> Wil je tekst overnemen of een video(fragment), foto of illustratie gebruiken, mail dan naar <a href="mailto:copyright@volkskrant.nl">copyright@volkskrant.nl</a>. </p> <hr class="app-disclaimer__line"> </div> </div>    <div class="app-footer-org"> <p class="first">De Volkskrant is onderdeel van DPG Media.</p> <a href="https://www.dpgmediagroup.com/" class="dpg-logo"><img src="https://sel-static.persgroep.net/shared/images/dpg-logo.svg" alt="logo van dpg Media"></a> <p class="second">KvK Nummer: 34172906 | BTW Nummer: NL810828662B01</p> <p class="third">© <span>2025</span> DPG Media B.V. Alle rechten voorbehouden.</p> </div>     <div class="ad--layer" id="layer1" data-id="layer1"> <script>"function"==typeof window.loadAdvertSlot&&window.loadAdvertSlot("layer1")</script> </div>  <noscript> <iframe src="https://t.volkskrant.nl/gtm.js?id=GTM-MNR2SVJ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript>   </body> </html>
