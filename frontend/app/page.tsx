@@ -23,15 +23,14 @@ type FetchState = {
 
 export default function Home() {
 	const sources = "VRT NWS, De Standaard, De Morgen, Nieuwsblad, HBVL, Telegraaf, GVA, De Volkskrant"; // Add used sources here
-
 	const collections = ["vrtnws", "demorgen", "destandaard", "nieuwsblad", "hbvl", "telegraaf", "gva", "devolkskrant"]; // Firestore collection names
+
+	const page_size = 100; // Number of articles to fetch at a time
 
 	const [state, setState] = useState<FetchState>({ items: [], loading: true });
 
 	// const [lastDoc, setLastDoc] = useState<any>(null); // previously used for single collection
 	const [lastDocTime, setLastDocTime] = useState<Date | null>(null); // for multi-collection pagination
-
-	const page_size = 100; // Number of articles to fetch at a time
 
 	// Optional heuristic to support balanced fetching, especially when considering loads of sources
 	// possible con: may not show the absolute most recent page_size articles
@@ -171,6 +170,7 @@ export default function Home() {
 		setLoadingMore(false);
 	};
 
+	// Triggers initial fetch on page load
 	useEffect(() => {
 		fetchArticles();
 
