@@ -12,6 +12,7 @@ BOT_NAME = "newsScraping"
 SPIDER_MODULES = ["newsScraping.spiders"]
 NEWSPIDER_MODULE = "newsScraping.spiders"
 
+# LOG_LEVEL = "CRITICAL"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "newsScraping (+http://www.yourdomain.com)"

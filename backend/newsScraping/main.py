@@ -7,6 +7,10 @@ import multiprocessing
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
+from run_spiders import run_parallel_spiders_for_list
+from run_spiders import run_spiders
+from run_spiders import run_single_spider
+
 from newsScraping.spiders.DeStandaard import DeStandaardSpider
 from newsScraping.spiders.vrtNws import VrtNwsSpider
 from newsScraping.spiders.DeMorgen import DeMorgenSpider
@@ -27,48 +31,12 @@ spiders = {
     "devolkskrant": DeVolkskrantSpider,
 }
 
-
 def get_spider_by_name(name: str):
     if not name:
         return None
 
     # Case-insensitive
     return spiders.get(name.lower())
-
-def run_single_spider(spider_class):
-    process = CrawlerProcess(get_project_settings())
-    process.crawl(spider_class)
-    process.start()
-
-def run_spiders():
-    settings = get_project_settings()
-    process = CrawlerProcess(settings)
-    for spider in spiders.values:
-        process.crawl(spider)
-    process.start()
-
-def run_benchmark_spiders(task):
-    times = []
-    iterations = 5
-    for _ in range(iterations):
-        start_time = time.time()
-        p = multiprocessing.Process(target=task)
-        p.start()
-        p.join()
-        end_time = time.time()
-        times.append(end_time - start_time)
-    return times
-
-def run_parallel_spiders_for_list(spider_classes: list):
-    processes = []
-    for spider in spider_classes:
-        if spider is None:
-            continue
-        p = multiprocessing.Process(target=run_single_spider, args=(spider,))
-        processes.append(p)
-        p.start()
-    for p in processes:
-        p.join()
 
 if __name__ == "__main__":
     manager = DatabaseManager()
@@ -109,11 +77,3 @@ if __name__ == "__main__":
     
     except KeyboardInterrupt:
         print("Shut down by user.")
-    # seq_res = run_benchmark_spiders(run_spiders)
-    # par_res = run_benchmark_spiders(run_parallel_spiders)
-    # print(f"Sequential times: {seq_res}")
-    # print(f"Total scraping time: {sum(seq_res)} seconds")
-    # print(f"Average scraping time: {np.mean(seq_res)} seconds")
-    # print(f"Parallel times: {par_res}")
-    # print(f"Total scraping time: {sum(par_res)} seconds")
-    # print(f"Average scraping time: {np.mean(par_res)} seconds")
